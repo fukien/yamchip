@@ -1,8 +1,12 @@
 package ES;
 
 import org.apache.http.HttpHost;
+import org.elasticsearch.action.DocWriteResponse;
+import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.support.replication.ReplicationResponse;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.index.query.MatchQueryBuilder;
@@ -16,10 +20,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class ESClient {
     RestHighLevelClient client = null;
     String ESIP = "10.77.40.35";
+    static String indexName = "kb";
+    static String docType = "_doc";
     public ESClient()
     {
         System.out.println("ESClient()");
@@ -105,6 +112,47 @@ public class ESClient {
             e.printStackTrace();
         }
         return  result;
+    }
+
+    /**
+    * @User: jyh
+    * @Date: 2018/6/12
+    * @Desc: insert an entity into the ES
+     * @param source: the source of the entity to be inserted.
+     *              e.g.  "subject" : "http://dbpedia.org/resource/George_Adamski",
+     *                    "0" : "name George Adamski",
+     *                    "1" : "birthDate 1891-04-17",
+     *                   "2" : "birthYear 1891",
+     * @param subject: the URI of the entity
+    */
+    public boolean ESC_insert(Map<String, Object> source, String subject)
+    {
+        boolean result = true;
+        IndexRequest indexRequest = new IndexRequest(indexName, docType, subject).source(source);
+        try {
+            IndexResponse indexResponse = client.index(indexRequest);
+            if (indexResponse.getResult() == DocWriteResponse.Result.CREATED) {
+                System.out.println("ESC_insert: create index-" +  indexResponse.getId());
+            } else if (indexResponse.getResult() == DocWriteResponse.Result.UPDATED) {
+                System.out.println("ESC_insert: update index-" +  indexResponse.getId());
+            }
+            ReplicationResponse.ShardInfo shardInfo = indexResponse.getShardInfo();
+            if (shardInfo.getTotal() != shardInfo.getSuccessful()) {
+                System.out.println("ERROR: ESC_insert(" +  indexResponse.getId() + "): number of successful shards is less than total shards");
+                result = false;
+            }
+            if (shardInfo.getFailed() > 0) {
+                for (ReplicationResponse.ShardInfo.Failure failure : shardInfo.getFailures()) {
+                    String reason = failure.reason();
+                    System.out.println("ERROR: ESC_insert(" +  indexResponse.getId() + "): failure: " + reason );
+                    result = false;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            result = false;
+        }
+        return result;
     }
 
     public void ESC_close()
