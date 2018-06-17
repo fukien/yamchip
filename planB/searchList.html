@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Query_Yamchip</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<link href="css/result.css" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" href="images/yumei_yam_chips_cumin.jpg">
+</head>
+
+<body>
+
+<div id="container">
+	<div id="hd" class="ue-clear">
+    	<div class="logo"></div>
+        <div class="inputArea">
+        	<input type="text" class="searchInput" />
+            <input type="button" class="searchButton" />
+        </div>
+    </div>
+
+    <div class="nav">
+    	<p class="resultTotal">
+            <span class="info">About&nbsp;<span class="totalResult">2,608,495</span>&nbsp;results(<span class="time">0.36</span> seconds)</span>
+            <span class="orderOpt"></span>
+        </p>
+    </div>
+
+	<div id="bd" class="ue-clear">
+        <div id="main">
+        	<div class="sideBar">
+                <div class="sideBarShowHide">
+                	<a href="javascript:;" class="icon"></a>
+                </div>
+            </div>
+            <div class="resultArea">
+            	
+                <div class="resultList">
+                	<div class="resultItem">
+                    	<div class="itemHead">
+                        	<a href="http://www.uimaker.com"  target="_blank" class="title">Uimaker-专注<span class="keyWord">UI设计</span></a>
+                            <span class="divsion">-</span>
+                            <span class="fileType">
+                            	<span class="label">设计分类：</span>
+                                <span class="value">后台界面</span>
+                            </span>
+                            <span class="dependValue">
+                            	<span class="label">相关度：</span>
+                                <span class="value">91.78%</span>
+                            </span>
+                        </div>
+                        <div class="itemBody">
+                        	UI，我们还为<span class="keyWord">UI设计</span>师提供UI设计教、UI设计素材、ICON、图标设计、手机UI、ui设计师招聘、软件界面设计、后台界面、后台模版等相关内容;很多题目一问出来就知道怎么回答是高EQ 应该从一些具体的事出发 唉。。。 下次我出一个肯定比它好 欧阳筱筱 （何时才能遇见那个命中的克星呢？） 你的分数为28分，恭喜你有高EQ。EQ高的人，在自信心、人际关系、工作表现、婚姻...
+                        </div>
+                        <div class="itemFoot">
+                        	<span class="info">
+                            	<label>设计师：</label>
+                                <span class="value">uimaker</span>
+                            </span>
+                            <span class="info">
+                            	<label>搜索引擎：</label>
+                                <span class="value">百度搜索</span>
+                            </span>
+                            <span class="info">
+                            	<label>发布时间：</label>
+                                <span class="value">2013-12-12 12:12</span>
+                            </span>
+                        </div>
+                    </div>          
+                </div>
+                <!-- 分页 -->
+                <div class="pagination ue-clear"></div>
+                <!-- 相关搜索 -->
+                <div class="dependSearch ue-clear">
+                    <h6>Relevant Search</h6>
+                    <div class="searchList">
+                        <p>
+                            <a href="javascript:;">UI设计</a>
+                            <a href="javascript:;">UI设计师</a>
+                            <a href="javascript:;">图标设计</a>
+                            <a href="javascript:;">设计师</a>
+                        </p>
+                        <p>
+                            <a href="javascript:;">后台界面</a>
+                            <a href="javascript:;">管理系统界面</a>
+                            <a href="javascript:;">界面欣赏</a>
+                            <a href="javascript:;">交互设计</a>
+                        </p>
+                    </div>
+                </div>
+                
+                <!--结果中搜索-->
+                <div class="inputArea searchInResult">
+                    <input type="text" class="searchInput" />
+                    <input type="button" class="searchButton" />
+   
+                </div>
+
+            </div>
+            </div>
+        </div><!-- End of main -->
+    </div><!--End of bd-->
+</div><!--End of container-->
+
+</body>
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/pagination.js"></script>
+<script type="text/javascript">
+	$('.searchList').on('click', '.searchItem', function(){
+		$('.searchList .searchItem').removeClass('current');
+		$(this).addClass('current');	
+	});
+	
+	
+	
+	$.each($('.subfieldContext'), function(i, item){
+		$(this).find('li:gt(2)').hide().end().find('li:last').show();		
+	});
+	
+	$('.subfieldContext .more').click(function(e){
+		var $more = $(this).parent('.subfieldContext').find('.more');
+		if($more.hasClass('show')){
+			
+			if($(this).hasClass('define')){
+				$(this).parent('.subfieldContext').find('.more').removeClass('show').find('.text').text('自定义');
+			}else{
+				$(this).parent('.subfieldContext').find('.more').removeClass('show').find('.text').text('更多');	
+			}
+			$(this).parent('.subfieldContext').find('li:gt(2)').hide().end().find('li:last').show();
+	    }else{
+			$(this).parent('.subfieldContext').find('.more').addClass('show').find('.text').text('收起');
+			$(this).parent('.subfieldContext').find('li:gt(2)').show();	
+		}
+		
+	});
+	
+	$('.sideBarShowHide a').click(function(e) {
+		if($('#main').hasClass('sideBarHide')){
+			$('#main').removeClass('sideBarHide');
+			$('#container').removeClass('sideBarHide');
+		}else{
+			$('#main').addClass('sideBarHide');	
+			$('#container').addClass('sideBarHide');
+		}
+        
+    });
+	
+	//分页
+	$(".pagination").pagination(500, {
+		current_page :0, //当前页码
+		items_per_page :9,
+		display_msg :true,
+		callback :pageselectCallback
+	});
+	function pageselectCallback(page_id, jq) {
+		alert("当前页id(由0开始)：" + page_id + "，\n每页显示：" + this.items_per_page + "条数据");
+	}
+	
+	setHeight();
+	$(window).resize(function(){
+		setHeight();	
+	});
+	
+	function setHeight(){
+		if($('#container').outerHeight() < $(window).height()){
+			$('#container').height($(window).height()-33);
+		}	
+	}
+</script>
+
+</html>
