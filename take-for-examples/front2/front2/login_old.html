@@ -1,0 +1,124 @@
+﻿<html>
+	<head>
+		<meta charset="utf-8">
+		<title>login</title>
+		
+		<script src="js/jquery-2.2.1.js"></script>
+		<script src="js/js.cookie.js"></script>
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Optional Bootstrap Theme -->
+		<link href="css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
+		
+		
+		<link rel="stylesheet" href="css/login.css">
+		<link rel="stylesheet" href="css/common.css">
+		<script  type="text/javascript" src="js/login.js"></script>
+		<script  type="text/javascript" >
+			$("document").ready(function(){
+				$("#loginBtn").click(loginCheck);
+				$("#auto_login").click(auto_login_check);
+			});
+		</script>
+	</head>
+	
+	<body>	
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-3">
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed navbar-center" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">超越数科技</a>
+			</div>
+			</div>
+			<div class="col-md-4">
+			
+			<div class="collapse navbar-collapse bs-navbar-collapse" id="navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="#">首页</a></li>
+					<li><a href="#"> 案例</a></li>
+					<li><a href="#">关于我们</a></li>
+					<li><div class="head-log"><a href="#">登录</a>|<a href="#" >注册</a></div></li>
+				</ul>
+			</div> <!--navbar-collapse-->
+			</div>
+			<div class="col-md-2"></div>
+			</div> <!--row-->
+		</nav>
+		<div class="whole-body">
+		<div class="row">
+		<div class="panel panel-default" id="login-panel">
+			<div class="panel-body">
+				<h3 class="text-center text-primary with-line">登录账号</h3>
+				<br>
+					<form class="form" role="form" >
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+									<input type="text" class="form-control" id="job-number" placeholder="工号或者用户名">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+									<input type="password" class="form-control" id="password" placeholder="密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<input type="radio" id="auto_login" value="1"> 自动登录
+							</div>
+							<div class="form-group">
+								<div class="row">
+								<div class="col-md-6">
+									<button type="button" class="btn btn-warning btn-block" id="loginBtn">登录</button>
+								</div>
+								<div class="col-md-6">
+									<button type="button" class="btn btn-primary btn-block" id="registerBtn">注册</button>
+								</div>
+								</div>
+							</div>
+						</form>
+				<br>
+			</div><!--panel-body-->
+		</div><!--panel-->
+		</div><!--row-->
+		</div><!--whole-body-->
+		<footer class="absolute-footer">	
+			<div class="row">
+				<div class="col-md-6 footer-content">
+					<hr/>
+					<div class="row">
+						<div class="col-md-6">
+							<p class="text-left text-primary">超越数科技</p>
+						</div>
+						<div class="col-md-6">
+							<p class="text-right text-primary">微信 qq 微博</p>
+						</div>
+					</div>
+					<hr/>
+					<div class="row footer-sm" >
+						<div class="col-md-6">
+							<p class="text-left text-primary">Copyright &copy; 2016.Company nome All rights reserved</p>
+						</div>
+						<div class="col-md-6">
+							<p class="text-right text-primary">联系我们|加入我们|友情链接|免责声明</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	</body>
+	
+</html>

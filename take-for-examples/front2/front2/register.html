@@ -1,0 +1,156 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>register</title>
+		<script src="js/jquery-2.2.1.js"></script>
+		<script src="js/js.cookie.js"></script>
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		
+		<link rel="stylesheet" href="css/register.css">
+		<link rel="stylesheet" href="css/common.css">
+		<script src="js/register.js"></script>	
+		<script  type="text/javascript" >
+			$("document").ready(function(){
+				$("#checkCode").click(createCode);
+				$("#registerBtn").click(register);
+				createCode();
+				$("#password").blur(psd_format_check);
+			});
+		</script>
+	</head>
+	
+	<body>
+		<div role="navigation" id="navbar">
+			<img id="navbar_header_img" src="img/logo.png" ></img>
+			<div id="head_reg"><a href="#">登录</a>|<a href="#" >注册</a></div>
+		</div>
+
+		<div class="whole-body" id="whole_body">
+		<div>
+			<div class="panel panel-default" id="register_frame">
+				<table class="table" id="register_table">
+					<tr>
+						<td colspan="2" id="nobordertd">
+							<h4 class="text-center text-primary with-line">用户注册</h4>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" id="nobordertd">
+							<p class="note">如果您已经注册过账户，请点击<a src="#">登录</a></p>
+						</td>
+					</tr>
+					<tr>
+						<td class="label-td" id="nobordertd">
+							<p class="text_just">用户名</p>
+						</td>
+						<td id="nobordertd">
+							<input type="text" class="form-control" id="username" placeholder="最少6位,英文字母、数字及下划线组成">
+						</td>
+					</tr>
+					<tr>
+						<td class="label-td" id="nobordertd">
+							<p class="text_just">密码</p>
+						</td>
+						<td id="nobordertd">
+							<input type="password" class="form-control"  id="password" placeholder="6-18位字符，区分大小写">
+							<p id="format_error_warn">输入错误，请输入正确格式</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="label-td" id="nobordertd">
+							<p class="text_just">确认密码</p>
+						</td>
+						<td id="nobordertd">
+							<input type="password" class="form-control" id="password2" placeholder="重复输入密码">
+						</td>
+					</tr>
+					<tr>
+						<td class="label-td" id="nobordertd">
+							<p class="text_just">公司名称</p>
+						</td>
+						<td id="nobordertd">
+							<input type="text"  class="form-control" id="firm_name" placeholder="请输入您的公司名称">
+						</td>
+					</tr>
+					<tr>
+						<td class="label-td" id="nobordertd">
+							<p class="text_just">工号</p>
+						</td>
+						<td id="nobordertd">
+							<input type="text"  class="form-control" id="job_number" placeholder="请输入您的工号">
+						</td>
+					</tr>
+					<tr>
+						<td class="label-td" id="nobordertd">
+							<p class="text_just">联系人</p>
+						</td>
+						<td id="nobordertd">
+							<input type="text" class="form-control"  id="contacts" placeholder="请输入您的联系人姓名">
+						</td>
+					</tr>
+					<tr>
+						<td class="label-td" id="nobordertd">
+							<p class="text_just">联系电话</p>
+						</td>
+						<td id="nobordertd">
+							<input type="text" class="form-control"  id="phone" placeholder="电话号码与分机之间用“-”区隔">
+						</td>
+					</tr>	
+					<tr>
+						<td class="label-td" id="nobordertd">
+							<p class="text_just">验证码</p>
+						</td>
+						<td id="nobordertd">
+							<input type="text" class="form-control" size="20" id="checkCodeInput">
+							<div class="code" id="checkCode" ></div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" id="nobordertd">
+							<button type="button" class="btn btn-warning btn-block" id="registerBtn">注册</button>
+						</td>
+					</tr>
+				</table>
+			</div><!--panel panel-default-->
+			
+			<div class="panel panel-default panel-body" id="prompt-panel">
+				<div  id="prompt-panel-title">
+					<p id="prompt-panel-title-line" ></p>
+					<p>注册提示 </p>
+				</div>
+				<hr/>
+				<p id="prompt">
+					超越数提供的部分产品服务需要审核后方可开通使用，请您确保注册时填写信息的真实有效，如有问题，可以通过以下方式联系我们。
+				</p>
+				<div class="panel panel-default panel-body customer-service" id="phoneservice">
+					通过400热线联系客服
+					<div id="contact-phone">
+					<img src="img/phone.png"></img> 400-6240-800
+					</div>
+				</div><!--panel panel-default-->
+				<div class="panel panel-default panel-body customer-service" id="mailservice">
+					通过电子邮箱联系客服
+					<div id="contact-mail">
+					<img src="img/mail.png"></img> beijing@baifendian.com
+					</div>
+				</div><!--panel panel-default-->
+			</div><!--panel panel-default-->
+		</div>
+		</div><!--whole-body-->
+		<div class="absolute-footer">
+				<iframe src="footer.html" id="footer-frame"></iframe>
+		</div>
+		
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	</body>
+	
+</html>
