@@ -1,0 +1,939 @@
+{
+  "count": 100,
+  "results": [
+    {
+      "total_score": 7.795488346387071,
+      "source": {
+        "0": "name Pittsburgh Tribune-Review",
+        "1": "circulation 187875",
+        "2": "circulation 202181",
+        "subject": "http://dbpedia.org/resource/Pittsburgh_Tribune-Review"
+      }
+    },
+    {
+      "total_score": 7.667985788476951,
+      "source": {
+        "0": "name Woodstock Sentinel Review",
+        "subject": "http://dbpedia.org/resource/Woodstock_Sentinel-Review"
+      }
+    },
+    {
+      "total_score": 7.437903143988154,
+      "source": {
+        "0": "name The Spokesman-Review",
+        "subject": "http://dbpedia.org/resource/The_Spokesman-Review"
+      }
+    },
+    {
+      "total_score": 7.3603615214020826,
+      "source": {
+        "0": "name Cleburne Times-Review",
+        "1": "circulation 5827",
+        "subject": "http://dbpedia.org/resource/Cleburne_Times-Review"
+      }
+    },
+    {
+      "total_score": 6.94550778428273,
+      "source": {
+        "0": "name Performance Review",
+        "1": "releaseDate 2005-11-15",
+        "2": "episodeNumber 8",
+        "3": "seasonNumber 2",
+        "subject": "http://dbpedia.org/resource/Performance_Review"
+      }
+    },
+    {
+      "total_score": 6.902092894237633,
+      "source": {
+        "0": "name Sing a Happy Song: The Warner Bros. Recordings",
+        "1": "review not",
+        "subject": "http://dbpedia.org/resource/Sing_a_Happy_Song:_The_Warner_Bros._Recordings"
+      }
+    },
+    {
+      "total_score": 6.895669182268995,
+      "source": {
+        "0": "name WHITE PYJAMAS",
+        "1": "review ARIA",
+        "subject": "http://dbpedia.org/resource/White_Pyjamas"
+      }
+    },
+    {
+      "total_score": 6.778965255848191,
+      "source": {
+        "0": "name La Rouge",
+        "1": "review http://www.kevchino.com/formReview.aspx?review=628",
+        "2": "review http://www.montrealmirror.com/2005/051905/disc.html",
+        "subject": "http://dbpedia.org/resource/La_Rouge_(album)"
+      }
+    },
+    {
+      "total_score": 6.765314133876757,
+      "source": {
+        "0": "name Tanglewood Tree",
+        "1": "runtime 2374.0",
+        "2": "releaseDate 2000-03-14",
+        "3": "review http://www.icogitate.com/~celticfolkmusic/fr-DaveCarter3.htm",
+        "4": "review http://www.rambles.net/carter_tanglewood.html",
+        "5": "review ",
+        "subject": "http://dbpedia.org/resource/Tanglewood_Tree"
+      }
+    },
+    {
+      "total_score": 6.539326657514472,
+      "source": {
+        "0": "name MISTER WHISKERS MONKEY BUSINESS",
+        "1": "review ARIA",
+        "subject": "http://dbpedia.org/resource/Mister_Whiskers:_Monkey_Business"
+      }
+    },
+    {
+      "total_score": 6.513081448783259,
+      "source": {
+        "0": "name Right Time",
+        "1": "review A-",
+        "subject": "http://dbpedia.org/resource/Right_Time"
+      }
+    },
+    {
+      "total_score": 6.277614159461555,
+      "source": {
+        "0": "name Review",
+        "subject": "http://dbpedia.org/resource/Review_(magazine)"
+      }
+    },
+    {
+      "total_score": 6.205492540427793,
+      "source": {
+        "0": "name National Review",
+        "1": "editorTitle Editor",
+        "2": "issn 0028-0038",
+        "subject": "http://dbpedia.org/resource/National_Review"
+      }
+    },
+    {
+      "total_score": 6.159300247122459,
+      "source": {
+        "0": "name Review and Preview",
+        "subject": "http://dbpedia.org/resource/Review_and_Preview"
+      }
+    },
+    {
+      "total_score": 6.128505704277804,
+      "source": {
+        "0": "name UVU Review",
+        "1": "foundingDate 2008-07-01",
+        "subject": "http://dbpedia.org/resource/UVU_Review"
+      }
+    },
+    {
+      "total_score": 6.101953177954648,
+      "source": {
+        "0": "name Sociological Review",
+        "1": "issn 0038-0261",
+        "2": "issn 1467-954X",
+        "3": "firstPublicationYear 1908",
+        "4": "abbreviation Soc. Rev.",
+        "5": "impactFactor 0.722",
+        "subject": "http://dbpedia.org/resource/Sociological_Review",
+        "6": "impactFactorAsOf 2010"
+      }
+    },
+    {
+      "total_score": 6.083342103768183,
+      "source": {
+        "0": "name Piece By Piece",
+        "1": "review http://www.johnmartyn.com/",
+        "subject": "http://dbpedia.org/resource/Piece_by_Piece_(John_Martyn_album)"
+      }
+    },
+    {
+      "total_score": 6.077125058145243,
+      "source": {
+        "0": "name Sapphire",
+        "1": "review http://www.johnmartyn.com/",
+        "subject": "http://dbpedia.org/resource/Sapphire_(John_Martyn_album)"
+      }
+    },
+    {
+      "total_score": 5.992547158909484,
+      "source": {
+        "0": "name §²§Ö§Ó§ð (Review)",
+        "1": "activeYearsEndYear 1988",
+        "2": "activeYearsStartYear 1988",
+        "3": "background group_or_band",
+        "subject": "http://dbpedia.org/resource/Review_(band)"
+      }
+    },
+    {
+      "total_score": 5.981055873616838,
+      "source": {
+        "0": "name Redux",
+        "1": "review http://www.punknews.org/review/9427",
+        "subject": "http://dbpedia.org/resource/Redux_(EP)"
+      }
+    },
+    {
+      "total_score": 5.950126235489595,
+      "source": {
+        "0": "name This May Be The Year I Disappear",
+        "1": "review http://www.punknews.org/review/3783",
+        "subject": "http://dbpedia.org/resource/This_May_Be_the_Year_I_Disappear"
+      }
+    },
+    {
+      "total_score": 5.930015254129975,
+      "source": {
+        "0": "name Well Kept Secret",
+        "1": "review http://www.johnmartyn.com/",
+        "subject": "http://dbpedia.org/resource/Well_Kept_Secret"
+      }
+    },
+    {
+      "total_score": 5.901637612882037,
+      "source": {
+        "0": "name Technology Review",
+        "1": "editorTitle Editor in Chief",
+        "2": "issn 0040-1692",
+        "subject": "http://dbpedia.org/resource/Technology_Review"
+      }
+    },
+    {
+      "total_score": 5.802662478538069,
+      "source": {
+        "0": "name Nosferatu",
+        "1": "review http://www.allmusic.com/album/nosferatu-r9192/review",
+        "2": "review http://www.metalcrypt.com/pages/review.php?revid=2342",
+        "3": "review http://www.metalstorm.net/pub/review.php?review_id=5680",
+        "subject": "http://dbpedia.org/resource/Nosferatu_(Helstar_album)"
+      }
+    },
+    {
+      "total_score": 5.761542405350635,
+      "source": {
+        "0": "name Physical Review",
+        "1": "oclc 233971234",
+        "2": "issn 1943-2879",
+        "3": "firstPublicationYear 1893",
+        "4": "abbreviation Phys. Rev.",
+        "5": "finalPublicationYear 1893",
+        "subject": "http://dbpedia.org/resource/Physical_Review"
+      }
+    },
+    {
+      "total_score": 5.760418652176667,
+      "source": {
+        "0": "name Hispanic Review",
+        "1": "oclc 1752093",
+        "2": "issn 0018-2176",
+        "3": "issn 1553-0639",
+        "4": "firstPublicationYear 1933",
+        "5": "frequencyOfPublication Quarterly",
+        "subject": "http://dbpedia.org/resource/Hispanic_Review",
+        "6": "lccn 34028948",
+        "7": "abbreviation Hispanic Rev.",
+        "8": "jstor 00182176"
+      }
+    },
+    {
+      "total_score": 5.731516069411563,
+      "source": {
+        "0": "name London Conversation",
+        "1": "review http://www.johnmartyn.com/",
+        "2": "review http://www.allmusic.com/cg/amg.dll?p=amg&sql=10:0iftxqygldse",
+        "subject": "http://dbpedia.org/resource/London_Conversation"
+      }
+    },
+    {
+      "total_score": 5.708772078369581,
+      "source": {
+        "0": "name Saturday Review",
+        "1": "issn 0036-4983",
+        "subject": "http://dbpedia.org/resource/Saturday_Review_(U.S._magazine)"
+      }
+    },
+    {
+      "total_score": 5.699452400896382,
+      "source": {
+        "0": "name Harvard Review",
+        "1": "issn 1077-2901",
+        "subject": "http://dbpedia.org/resource/Harvard_Review"
+      }
+    },
+    {
+      "total_score": 5.68394738094446,
+      "source": {
+        "0": "name Call: Review",
+        "subject": "http://dbpedia.org/resource/Call:_Review"
+      }
+    },
+    {
+      "total_score": 5.67669745107245,
+      "source": {
+        "0": "name Policy Review",
+        "1": "issn 0146-5945",
+        "2": "frequencyOfPublication Bimonthly",
+        "subject": "http://dbpedia.org/resource/Policy_Review"
+      }
+    },
+    {
+      "total_score": 5.6497025199478825,
+      "source": {
+        "0": "name Creative Review",
+        "subject": "http://dbpedia.org/resource/Creative_Review"
+      }
+    },
+    {
+      "total_score": 5.640747734910648,
+      "source": {
+        "0": "name Turkish Review",
+        "1": "editorTitle Editor",
+        "2": "issn 1309964-7",
+        "subject": "http://dbpedia.org/resource/Turkish_Review"
+      }
+    },
+    {
+      "total_score": 5.6340848389663405,
+      "source": {
+        "0": "name Wascana Review",
+        "1": "issn 0043-0412",
+        "subject": "http://dbpedia.org/resource/Wascana_Review"
+      }
+    },
+    {
+      "total_score": 5.626512542627795,
+      "source": {
+        "0": "name ICSID Review",
+        "1": "oclc 13275772",
+        "2": "issn 0258-3690",
+        "3": "firstPublicationYear 1986",
+        "4": "frequencyOfPublication Biannually",
+        "5": "abbreviation ICSID Rev.",
+        "subject": "http://dbpedia.org/resource/ICSID_Review"
+      }
+    },
+    {
+      "total_score": 5.622207875780092,
+      "source": {
+        "0": "name Review Philippines",
+        "1": "runtime 3600.0",
+        "subject": "http://dbpedia.org/resource/Review_Philippines"
+      }
+    },
+    {
+      "total_score": 5.622170210062939,
+      "source": {
+        "0": "name Socialist Review",
+        "1": "editorTitle Editor",
+        "subject": "http://dbpedia.org/resource/Socialist_Review"
+      }
+    },
+    {
+      "total_score": 5.581832655756335,
+      "source": {
+        "0": "name Windsor Review",
+        "subject": "http://dbpedia.org/resource/Windsor_Review"
+      }
+    },
+    {
+      "total_score": 5.535670767218521,
+      "source": {
+        "0": "name Boston Review",
+        "1": "editorTitle Editors",
+        "2": "issn 0734-2306",
+        "subject": "http://dbpedia.org/resource/Boston_Review"
+      }
+    },
+    {
+      "total_score": 5.521190565862356,
+      "source": {
+        "0": "name News & Review",
+        "subject": "http://dbpedia.org/resource/News_&_Review"
+      }
+    },
+    {
+      "total_score": 5.485546583905059,
+      "source": {
+        "0": "name Tramway Review",
+        "1": "issn 0041-1019",
+        "subject": "http://dbpedia.org/resource/Tramway_Review"
+      }
+    },
+    {
+      "total_score": 5.485281986068275,
+      "source": {
+        "0": "name Adventist Review",
+        "1": "editorTitle Executive publisher/editor",
+        "2": "issn 0161-1119",
+        "subject": "http://dbpedia.org/resource/Adventist_Review"
+      }
+    },
+    {
+      "total_score": 5.482795031269643,
+      "source": {
+        "0": "name Museum Anthropology Review",
+        "1": "oclc 137237269",
+        "2": "issn 1938-5145",
+        "3": "firstPublicationYear 2007",
+        "4": "frequencyOfPublication Biannually",
+        "5": "lccn 2007212173",
+        "subject": "http://dbpedia.org/resource/Museum_Anthropology_Review",
+        "6": "openAccessContent Yes"
+      }
+    },
+    {
+      "total_score": 5.467674552463906,
+      "source": {
+        "0": "name Mammal Review",
+        "1": "issn 1365-2907",
+        "2": "impactFactor 2.515",
+        "3": "impactFactorAsOf 2010",
+        "subject": "http://dbpedia.org/resource/Mammal_Review"
+      }
+    },
+    {
+      "total_score": 5.45380338744014,
+      "source": {
+        "0": "name Greensboro Review",
+        "1": "issn 0017-4084",
+        "2": "firstPublicationYear 1969",
+        "3": "frequencyOfPublication Biannual",
+        "subject": "http://dbpedia.org/resource/Greensboro_Review"
+      }
+    },
+    {
+      "total_score": 5.421539514626333,
+      "source": {
+        "0": "name Astronomical Review",
+        "1": "oclc 786295583",
+        "2": "issn 2167-2857",
+        "3": "issn 2167-2865",
+        "4": "firstPublicationYear 2011",
+        "5": "frequencyOfPublication Quarterly",
+        "subject": "http://dbpedia.org/resource/The_Astronomical_Review",
+        "6": "lccn 2012200300",
+        "7": "abbreviation Astron. Rev.",
+        "8": "openAccessContent Hybrid"
+      }
+    },
+    {
+      "total_score": 5.4066381438840985,
+      "source": {
+        "0": "name Dublin Review",
+        "subject": "http://dbpedia.org/resource/Dublin_Review_(Catholic_periodical)"
+      }
+    },
+    {
+      "total_score": 5.398801756479948,
+      "source": {
+        "0": "name Sculpture Review",
+        "1": "editorTitle Editor-in-Chief",
+        "2": "issn 0028-0127",
+        "subject": "http://dbpedia.org/resource/Sculpture_Review"
+      }
+    },
+    {
+      "total_score": 5.387142126262255,
+      "source": {
+        "0": "name It's Called Life",
+        "1": "review http://www.popmatters.com/pm/review/eternia_its_called_life/",
+        "2": "review http://www.rapreviews.com/archive/2006_01_itscalledlife.html",
+        "3": "review http://www.urbnet.com/eternia/Life-MontrealMirror.html",
+        "4": "review http://www.urbnet.com/eternia/Life-URB.html",
+        "subject": "http://dbpedia.org/resource/It's_Called_Life"
+      }
+    },
+    {
+      "total_score": 5.379244684715254,
+      "source": {
+        "0": "name Innes Review",
+        "1": "oclc 60623671",
+        "2": "issn 0020-157X",
+        "3": "issn 1745-5219",
+        "4": "firstPublicationYear 1950",
+        "5": "frequencyOfPublication Biannual",
+        "subject": "http://dbpedia.org/resource/Innes_Review"
+      }
+    },
+    {
+      "total_score": 5.376753536952319,
+      "source": {
+        "0": "name Sycamore Review",
+        "1": "issn 1043-1497",
+        "2": "firstPublicationYear 1989",
+        "3": "frequencyOfPublication Biannual",
+        "subject": "http://dbpedia.org/resource/Sycamore_Review"
+      }
+    },
+    {
+      "total_score": 5.375950422463592,
+      "source": {
+        "0": "name Jabberwock Review",
+        "1": "issn 1541-3705",
+        "2": "firstPublicationYear 1980",
+        "3": "frequencyOfPublication semi-annually",
+        "subject": "http://dbpedia.org/resource/Jabberwock_Review"
+      }
+    },
+    {
+      "total_score": 5.363579460862967,
+      "source": {
+        "0": "name Colorado Review",
+        "1": "issn 1046-3348",
+        "2": "firstPublicationYear 1956",
+        "3": "frequencyOfPublication Quarterly",
+        "subject": "http://dbpedia.org/resource/Colorado_Review"
+      }
+    },
+    {
+      "total_score": 5.357006491146126,
+      "source": {
+        "0": "name Kantian Review",
+        "subject": "http://dbpedia.org/resource/Kantian_Review"
+      }
+    },
+    {
+      "total_score": 5.355576275700933,
+      "source": {
+        "0": "name Yukon Review",
+        "1": "circulation 15000",
+        "subject": "http://dbpedia.org/resource/Yukon_Review"
+      }
+    },
+    {
+      "total_score": 5.347665207919839,
+      "source": {
+        "0": "name Geographical Review",
+        "1": "issn 0016-7428",
+        "2": "frequencyOfPublication Quarterly",
+        "subject": "http://dbpedia.org/resource/Geographical_Review"
+      }
+    },
+    {
+      "total_score": 5.346343084110369,
+      "source": {
+        "0": "name Indiana Review",
+        "1": "issn 0738-386X",
+        "2": "firstPublicationYear 1976",
+        "3": "frequencyOfPublication bi-annual",
+        "4": "finalPublicationYear 1976",
+        "subject": "http://dbpedia.org/resource/Indiana_Review"
+      }
+    },
+    {
+      "total_score": 5.343515401884643,
+      "source": {
+        "0": "name Library Review",
+        "1": "oclc 185275449",
+        "2": "issn 0024-2535",
+        "3": "firstPublicationYear 1927",
+        "4": "frequencyOfPublication 9 issues per year",
+        "5": "lccn 33037938",
+        "subject": "http://dbpedia.org/resource/Library_Review_(journal)",
+        "6": "isPeerReviewed true"
+      }
+    },
+    {
+      "total_score": 5.343410014533806,
+      "source": {
+        "0": "name Tampa Review",
+        "1": "formerName Tampa Poetry Review",
+        "2": "issn 0896-064X",
+        "3": "firstPublicationYear 1964",
+        "4": "frequencyOfPublication Biannual",
+        "subject": "http://dbpedia.org/resource/Tampa_Review"
+      }
+    },
+    {
+      "total_score": 5.342390481785717,
+      "source": {
+        "0": "name AJS Review",
+        "1": "issn 0364-0094",
+        "2": "issn 1475-4541",
+        "3": "frequencyOfPublication Semi-Annual",
+        "subject": "http://dbpedia.org/resource/AJS_Review"
+      }
+    },
+    {
+      "total_score": 5.339855120468116,
+      "source": {
+        "0": "name Roanoke Review",
+        "1": "issn 0035-7367",
+        "2": "firstPublicationYear 1967",
+        "3": "frequencyOfPublication Annual",
+        "4": "finalPublicationYear 1967",
+        "subject": "http://dbpedia.org/resource/Roanoke_Review"
+      }
+    },
+    {
+      "total_score": 5.339439741414243,
+      "source": {
+        "0": "name Southwest Review",
+        "1": "formerName Texas Review",
+        "2": "issn 0038-4712",
+        "3": "firstPublicationYear 1915",
+        "4": "frequencyOfPublication Quarterly",
+        "subject": "http://dbpedia.org/resource/Southwest_Review"
+      }
+    },
+    {
+      "total_score": 5.330591685484613,
+      "source": {
+        "0": "name Evaluation Review",
+        "1": "oclc 5267706",
+        "2": "issn 0193-841X",
+        "3": "issn 1552-3926",
+        "4": "firstPublicationYear 1977",
+        "5": "frequencyOfPublication 6 times a year",
+        "subject": "http://dbpedia.org/resource/Evaluation_Review",
+        "6": "lccn 80643924",
+        "7": "abbreviation Eval. Rev.",
+        "8": "impactFactor 0.84",
+        "9": "impactFactorAsOf 2010"
+      }
+    },
+    {
+      "total_score": 5.3295965615573975,
+      "source": {
+        "0": "name Psychological Review",
+        "1": "oclc 1318836",
+        "2": "issn 0033-295X",
+        "3": "issn 1939-1471",
+        "4": "firstPublicationYear 1894",
+        "5": "frequencyOfPublication Quarterly",
+        "subject": "http://dbpedia.org/resource/Psychological_Review",
+        "6": "abbreviation Psychol. Rev.",
+        "7": "impactFactor 7.784",
+        "8": "impactFactorAsOf 2010"
+      }
+    },
+    {
+      "total_score": 5.326888768881341,
+      "source": {
+        "0": "name Potomac Review",
+        "1": "issn 1073-1989",
+        "2": "firstPublicationYear 1994",
+        "3": "frequencyOfPublication Biannual",
+        "subject": "http://dbpedia.org/resource/Potomac_Review"
+      }
+    },
+    {
+      "total_score": 5.326728716775809,
+      "source": {
+        "0": "name Chariton Review",
+        "1": "frequencyOfPublication Biannual",
+        "subject": "http://dbpedia.org/resource/Chariton_Review"
+      }
+    },
+    {
+      "total_score": 5.3200689225852695,
+      "source": {
+        "0": "name Edinburgh Review",
+        "subject": "http://dbpedia.org/resource/Edinburgh_Review"
+      }
+    },
+    {
+      "total_score": 5.320060729980469,
+      "source": {
+        "0": "name Optical Review",
+        "1": "oclc 53863964",
+        "2": "issn 1340-6000",
+        "3": "issn 1349-9432",
+        "4": "firstPublicationYear 1994",
+        "5": "frequencyOfPublication Bimonthly",
+        "subject": "http://dbpedia.org/resource/Optical_Review"
+      }
+    },
+    {
+      "total_score": 5.320060729980469,
+      "source": {
+        "0": "name Police Review",
+        "subject": "http://dbpedia.org/resource/Police_Review"
+      }
+    },
+    {
+      "total_score": 5.320060729980469,
+      "source": {
+        "0": "name Wikipedia Review",
+        "subject": "http://dbpedia.org/resource/Wikipedia_Review"
+      }
+    },
+    {
+      "total_score": 5.320060729980469,
+      "source": {
+        "0": "name Bellingham Review",
+        "1": "issn 0734-2934",
+        "subject": "http://dbpedia.org/resource/Bellingham_Review"
+      }
+    },
+    {
+      "total_score": 5.282563203310913,
+      "source": {
+        "0": "name Review Board",
+        "1": "releaseDate 2009-06-20",
+        "2": "latestReleaseVersion 1.6.4.1",
+        "3": "latestPreviewVersion 1.6 RC 2",
+        "subject": "http://dbpedia.org/resource/Review_Board"
+      }
+    },
+    {
+      "total_score": 5.281943036507803,
+      "source": {
+        "0": "name Victorian Review",
+        "1": "formerName Newsletter of the Victorian Studies Association of Western Canada",
+        "2": "issn 08481512",
+        "3": "frequencyOfPublication Biannually",
+        "4": "isPeerReviewed true",
+        "5": "jstor 08481512",
+        "subject": "http://dbpedia.org/resource/Victorian_Review"
+      }
+    },
+    {
+      "total_score": 5.281935310363769,
+      "source": {
+        "0": "name Pictorial Review",
+        "subject": "http://dbpedia.org/resource/Pictorial_Review"
+      }
+    },
+    {
+      "total_score": 5.272866403553614,
+      "source": {
+        "0": "name Iceland Review",
+        "1": "issn 0019-1094",
+        "subject": "http://dbpedia.org/resource/Iceland_Review"
+      }
+    },
+    {
+      "total_score": 5.2656799376306616,
+      "source": {
+        "0": "name Baltimore Review",
+        "1": "issn 1092-5716",
+        "2": "firstPublicationYear 1996",
+        "subject": "http://dbpedia.org/resource/Baltimore_Review"
+      }
+    },
+    {
+      "total_score": 5.242538739632804,
+      "source": {
+        "0": "name Neuropsychology Review",
+        "1": "oclc 18516298",
+        "2": "issn 1040-7308",
+        "3": "issn 1573-6660",
+        "4": "firstPublicationYear 1990",
+        "5": "frequencyOfPublication quarterly",
+        "subject": "http://dbpedia.org/resource/Neuropsychology_Review",
+        "6": "abbreviation Neuropsychol Rev",
+        "7": "coden NERVEJ",
+        "8": "impactFactor 5.231",
+        "9": "impactFactorAsOf 2009"
+      }
+    },
+    {
+      "total_score": 5.24253101348877,
+      "source": {
+        "0": "name Glendora Review",
+        "subject": "http://dbpedia.org/resource/Glendora_Review"
+      }
+    },
+    {
+      "total_score": 5.24253101348877,
+      "source": {
+        "0": "name Griffith Review",
+        "1": "issn 1448-2924",
+        "2": "firstPublicationYear 2003",
+        "3": "frequencyOfPublication Quarterly",
+        "4": "finalPublicationYear 2003",
+        "subject": "http://dbpedia.org/resource/Griffith_Review"
+      }
+    },
+    {
+      "total_score": 5.2059019088745115,
+      "source": {
+        "0": "name Pacific REVIEW",
+        "subject": "http://dbpedia.org/resource/Pacific_REVIEW"
+      }
+    },
+    {
+      "total_score": 5.2059019088745115,
+      "source": {
+        "0": "name Partisan Review",
+        "1": "issn 0031-2525",
+        "subject": "http://dbpedia.org/resource/Partisan_Review"
+      }
+    },
+    {
+      "total_score": 5.2059019088745115,
+      "source": {
+        "0": "name Quarterly Review",
+        "subject": "http://dbpedia.org/resource/Quarterly_Review"
+      }
+    },
+    {
+      "total_score": 5.2059019088745115,
+      "source": {
+        "0": "name UNIX Review",
+        "subject": "http://dbpedia.org/resource/UNIX_Review"
+      }
+    },
+    {
+      "total_score": 5.2059019088745115,
+      "source": {
+        "0": "name Transatlantic Review",
+        "1": "issn 0041-1078",
+        "subject": "http://dbpedia.org/resource/Transatlantic_Review_(1959)"
+      }
+    },
+    {
+      "total_score": 5.2059019088745115,
+      "source": {
+        "0": "name Erotic Review",
+        "subject": "http://dbpedia.org/resource/Erotic_Review"
+      }
+    },
+    {
+      "total_score": 5.193209448403141,
+      "source": {
+        "0": "name Literary Review",
+        "1": "issn 0144-4360",
+        "subject": "http://dbpedia.org/resource/Literary_Review"
+      }
+    },
+    {
+      "total_score": 5.19320125579834,
+      "source": {
+        "0": "name Mr. Review",
+        "1": "activeYearsStartYear 1983",
+        "2": "background group_or_band",
+        "subject": "http://dbpedia.org/resource/Mr._Review"
+      }
+    },
+    {
+      "total_score": 5.19320125579834,
+      "source": {
+        "0": "name Sonora Review",
+        "1": "issn 0275-5203",
+        "subject": "http://dbpedia.org/resource/Sonora_Review"
+      }
+    },
+    {
+      "total_score": 5.188590324641243,
+      "source": {
+        "0": "name Physical Review Focus",
+        "1": "issn 1539-0748",
+        "2": "firstPublicationYear 1998",
+        "3": "frequencyOfPublication Weekly",
+        "4": "abbreviation Phys. Rev. Focus",
+        "5": "coden PRFHAQ",
+        "subject": "http://dbpedia.org/resource/Physical_Review_Focus",
+        "6": "openAccessContent Immediate"
+      }
+    },
+    {
+      "total_score": 5.13744717958492,
+      "source": {
+        "0": "name Greenbelt News Review",
+        "subject": "http://dbpedia.org/resource/Greenbelt_News_Review"
+      }
+    },
+    {
+      "total_score": 5.114222317373736,
+      "source": {
+        "0": "name Ihdaa'",
+        "1": "review http://hharabe.blogspot.com/",
+        "subject": "http://dbpedia.org/resource/Ihda'"
+      }
+    },
+    {
+      "total_score": 4.953085105193413,
+      "source": {
+        "0": "name Singapore Business Review",
+        "1": "foundingYear 2001",
+        "subject": "http://dbpedia.org/resource/Singapore_Business_Review"
+      }
+    },
+    {
+      "total_score": 4.927307510375976,
+      "source": {
+        "0": "name Economic and Philosophic",
+        "1": "name Science Review",
+        "subject": "http://dbpedia.org/resource/Economic_and_Philosophic_Science_Review"
+      }
+    },
+    {
+      "total_score": 4.854338561336633,
+      "source": {
+        "0": "name Old Kilkenny Review",
+        "1": "firstPublicationYear 1948",
+        "2": "frequencyOfPublication Annual",
+        "subject": "http://dbpedia.org/resource/Kilkenny_Archaeological_Society__3"
+      }
+    },
+    {
+      "total_score": 4.84252917296248,
+      "source": {
+        "0": "name Public Finance Review",
+        "1": "oclc 38430175",
+        "2": "issn 1091-1421",
+        "3": "firstPublicationYear 1973",
+        "4": "frequencyOfPublication Bi-monthly",
+        "5": "lccn 97657787",
+        "subject": "http://dbpedia.org/resource/Public_Finance_Review",
+        "6": "abbreviation Public Finance Rev.",
+        "7": "impactFactorAsOf 2010"
+      }
+    },
+    {
+      "total_score": 4.837049479391771,
+      "source": {
+        "0": "name Iowa Law Review",
+        "1": "oclc 1753893",
+        "2": "issn 0021-0552",
+        "3": "firstPublicationYear 1915",
+        "4": "frequencyOfPublication Five times a year",
+        "5": "lccn 16027401",
+        "subject": "http://dbpedia.org/resource/Iowa_Law_Review",
+        "6": "abbreviation Iowa Law Rev."
+      }
+    },
+    {
+      "total_score": 4.833873459418017,
+      "source": {
+        "0": "name Missouri Historical Review",
+        "1": "oclc 1758409",
+        "2": "issn 0026-6582",
+        "3": "firstPublicationYear 1906",
+        "4": "frequencyOfPublication Quarterly",
+        "5": "lccn 08005432",
+        "subject": "http://dbpedia.org/resource/Missouri_Historical_Review",
+        "6": "abbreviation Mo. Hist. Rev."
+      }
+    },
+    {
+      "total_score": 4.704500703471317,
+      "source": {
+        "0": "name Movie Review Intelligence",
+        "subject": "http://dbpedia.org/resource/Movie_Review_Intelligence"
+      }
+    },
+    {
+      "total_score": 4.704495620727539,
+      "source": {
+        "0": "name Higher Education Review",
+        "1": "oclc 615538568",
+        "2": "issn 0018-1609",
+        "3": "firstPublicationYear 1968",
+        "4": "frequencyOfPublication Triannually",
+        "5": "abbreviation High. Educ. Rev.",
+        "subject": "http://dbpedia.org/resource/Higher_Education_Review"
+      }
+    },
+    {
+      "total_score": 4.704495620727539,
+      "source": {
+        "0": "name Tufts Historical Review",
+        "1": "issn 1945-1745",
+        "subject": "http://dbpedia.org/resource/Tufts_Historical_Review"
+      }
+    }
+  ]
+}
