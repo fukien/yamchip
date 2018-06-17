@@ -1,2 +1,8 @@
 KBSE/target/*
 KBSE/.idea/*
+KBSE/lib/*
+KBSE/out/*
+KBSE/web/WEB-INF/classes/*
+KBSE/web/WEB-INF/lib/*
+
+
