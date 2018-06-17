@@ -33,10 +33,10 @@ function startQuery(){
 
 	$.ajax({
 			type: "GET",
-			url: 'xml/main.xml',
-			dataType: 'xml',
+			url: 'data.json',
+			dataType: 'text',
 			success : function(data){
-				alert('success');
+				alert('success' + data);
 				alert(data);
 				config_data = $(data);
 				navigation_chosen_img = config_data.find("navigation_chosen_img").first();
