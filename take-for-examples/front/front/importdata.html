@@ -1,0 +1,160 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>超越数科技-上传数据</title>
+		<script src="js/jquery-2.2.1.js"></script>
+		<script src="js/js.cookie.js"></script>
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript" src="js/echarts.min.js"></script>
+		
+		<link rel="stylesheet" href="css/importdata.css">
+		<link rel="stylesheet" href="css/common.css">
+		<script src="js/importdata.js"></script>	
+		<script  type="text/javascript" >
+			$("document").ready(function(){
+				$("#login_header").click(function(){
+					$("#login_header").dropdown();		
+				});
+				step_init();
+				$("#import_directly").click(turn_to_upload);
+				if(typeof FileReader === 'undefined'){ 
+					alert("抱歉，您的浏览器版本太低，不支持上传文件");
+				}else{ 
+					$("#read_file").change(readFile);
+					$("#uploadbtn").click(function(){
+						$("#read_file").click();
+					});
+				} 
+				$("#module_table .wirte_btn").click(edit_table_column_name);
+				$("#module_table .del_btn").click(table_del_col);
+				$("#module_table .add_col").click(table_add_col);
+			});
+		</script>
+	</head>
+	
+	<body>
+		<div role="navigation" id="navbar">
+			<img id="navbar_header_img" src="img/logo.png" ></img>
+			<div id="head_per" class="dropdown">
+				<span id="head_help">帮助</span>
+				<a class="dropdown-toggle" data-toggle="dropdown"  role="button" data-target="#"  href="#" id="login_header">
+				<img id="login_header_img" src="img/login_head.png" ></img>
+				</a>
+				<ul class="dropdown-menu" role="menu"  aria-labelledby="login_header" id="login_head_dropdwon">
+					<li class="menu" role="presentation" id="login_head_name">姓名姓名</li>
+					<li class="menu" role="presentation" id="logout">退出</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="whole-body" id="whole_body">
+			<div id="container">
+			<table id="step_table">
+				<tr>
+					<td id="step1" class="withbottom">
+						<span class="step_number">1</span>
+						配置Excel模板
+					</td>
+					<td id="step2" class="withbottom">
+						<span  class="step_number">2</span>
+						上传Excel
+					</td>
+					<td id="step3" class="withbottom">
+						<span class="step_number">3</span>
+						上传成功
+					</td>
+				</tr>
+				<tr>
+					<td id="state" colspan="3">
+						配置说明：1.暂仅支持微软Excel 2007 及以上版本， 以xlsx后缀名文件，大小需小于20M 
+						2.日期、数字（至少1列）为生成报表必须，不可删除，内容不可为空
+					</td>
+				</tr>
+			</table>
+			<div id="step1_content">
+			<table class="table table-bordered table-striped" id="module_table">
+				<thead>
+					<th class="col1">
+						日期
+					</th>
+					<th class="col2">
+						<span class="header_value">数字指标</span>
+						<span class="wirte_btn"><img src="img/write_btn.png"></img></span>
+					</th>
+					<th class="col3">
+						<span class="header_value">文本</span>
+						<span class="wirte_btn"><img src="img/write_btn.png"></img></span>
+						<span class="del_btn"><img src="img/del_btn.png"></img></span>
+					</th>
+					<th>
+						<span class="add_col">+ 添加列</span>
+					</th>
+				</thead>
+				<tr>
+					<td class="col1">2016-01-01</td>
+					<td class="col2">100</td>
+					<td class="col3">文本范例</td>
+					<td class="last_col"></td>
+				</tr>
+				<tr>
+					<td class="col1">2016-01-01</td>
+					<td class="col2">100</td>
+					<td class="col3">文本范例</td>
+					<td class="last_col"></td>
+				</tr>
+				<tr>
+					<td class="col1">2016-01-01</td>
+					<td class="col2">100</td>
+					<td class="col3">文本范例</td>
+					<td  class="last_col"></td>
+				</tr>
+				<tr>
+					<td class="col1">2016-01-01</td>
+					<td class="col2">100</td>
+					<td class="col3">文本范例</td>
+					<td class="last_col"></td>
+				</tr>
+				<tr>
+					<td class="col1">2016-01-01</td>
+					<td class="col2">100</td>
+					<td class="col3">文本范例</td>
+					<td class="last_col"></td>
+				</tr>
+			</table>
+			<button type="button" class="btn " id="finishbtn">完成配置并下载</button>
+			<p id="import_directly">已有模板，直接上传</p>
+			</div><!--step1_content-->
+			
+			<div id="step2_content">
+				<div id="choose_excel_box">
+					<p>请选择excel文件，按格式要求上传 </p>
+					<button type="button" class="btn " id="uploadbtn">+ 选择excel文件</button>
+					<input id="read_file" type="file" style="display:none;" />
+				</div>
+			</div><!--step2_content-->
+			<div id="step3_content">
+				<p id="result_title">上传结果 </p>
+				<div id="upload_result">
+					<p>数据上传成功！</p>
+				</div>
+			</div><!--step3_content-->
+			</div><!--container-->
+		</div><!--whole-body-->
+		<div class="absolute-footer">
+			<iframe src="footer.html" id="footer-frame"></iframe>
+		</div>
+		
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	</body>
+	
+</html>
