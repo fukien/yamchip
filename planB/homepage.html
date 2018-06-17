@@ -144,8 +144,8 @@
     <div class="search_form" >
          <form>
            <!--  <span> -->
-            <input type="text" name="keyword">
-            <input type="button" value="Search"  onclick="doClick()">
+            <input type="text" name="keyword" id="query_keyword">
+            <input type="button" value="Search"  onclick="doClick()" id="query_button">
             <!-- </span> -->
         </form>
     </div>
@@ -157,16 +157,11 @@
             <p class="mobile_link">Scan QR code for more info</p>
         </div>
     </div>
-
-
-    <a href="" id="linka" target="_blank" style="display:none"><span id="linkspan">test</span></a>
-    <script type="text/javascript" src="jquery-1.9.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.min.js"></script>
+    <script type="text/javascript" src="js/startQuery.js"></script>
     <script type="text/javascript">
         function doClick() {
-            // alert("hello");
-            $("#linka").attr("href", "searchList.html");
-            $("#linkspan").click();
-            return false;
+           $("#query_button").click(startQuery);
     }
     </script>
 
