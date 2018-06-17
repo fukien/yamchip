@@ -3,12 +3,12 @@ function startQuery(){
 	alert(query_keyword);
 
 	$.ajax({
-		type: "POST",
+		type: "GET",
 		url: 'data.json',
-		dataType:"xml",
-		data:{
-			keyword: query_keyword
-		},
+		dataType:"json",
+		// data:{
+		// 	keyword: query_keyword
+		// },
 
 		success : function(data){
 				alert('success');
