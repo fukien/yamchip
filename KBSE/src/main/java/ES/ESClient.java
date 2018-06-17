@@ -43,30 +43,15 @@ public class ESClient {
     * @User: jyh
     * @Date: 2018/6/11
     * @Desc: get all entities without keywords
+     * @param from: the start position of the results
+     * @param size: the number of results that want to get
     */
-    public JSONObject ESC_getall()
+    public SearchHits ESC_getall(int from, int size)
     {
         System.out.println("ESC_getall");
-        JSONObject result = new JSONObject();
-        SearchRequest searchRequest = new SearchRequest();
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         searchSourceBuilder.query(QueryBuilders.matchAllQuery());
-        searchRequest.source(searchSourceBuilder);
-        try {
-            SearchResponse searchResponse = client.search(searchRequest);
-            RestStatus status = searchResponse.status();
-            if(status.getStatus() >= 400)
-            {
-                System.out.println("search error:  " + status.toString());
-            }
-            SearchHits hits = searchResponse.getHits();
-            result.append("hits", hits.getTotalHits());
-            result.append("results", hits.toString());
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return result;
+        return  ESC_search(searchSourceBuilder, from, size);
     }
 
     /**
@@ -74,17 +59,31 @@ public class ESClient {
     * @Date: 2018/6/11
     * @Desc: get the first 20(maybe need to be changed) entities about the keyword(@param:key)
      * @param key: keywords to match, could be a sentence.
+     * @param from: the start position of the results
+     * @param size: the number of results that want to get
     */
-    public JSONObject ESC_keySearch(String key)
+    public SearchHits ESC_keySearch(String key, int from, int size)
     {
-        JSONObject result = new JSONObject();
         System.out.println("ESC_keySearch key:" + key);
-        SearchRequest searchRequest = new SearchRequest();
         MultiMatchQueryBuilder queryBuilder = new MultiMatchQueryBuilder(key);
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         searchSourceBuilder.query(queryBuilder);
-        searchSourceBuilder.size(20);
-        searchSourceBuilder.from(0);
+        return  ESC_search(searchSourceBuilder, from, size);
+    }
+
+    /**
+    * @User: jyh
+    * @Date: 2018/6/17
+    * @Desc: get the results from a given SearchSourceBuilder.
+     * @param from: the start position of the results
+     * @param size: the number of results that want to get
+    */
+    private SearchHits ESC_search(SearchSourceBuilder searchSourceBuilder, int from, int size){
+//        JSONObject result = new JSONObject();
+        SearchHits result = null;
+        searchSourceBuilder.size(size);
+        searchSourceBuilder.from(from);
+        SearchRequest searchRequest = new SearchRequest();
         searchRequest.source(searchSourceBuilder);
         try {
             SearchResponse searchResponse = client.search(searchRequest);
@@ -93,20 +92,20 @@ public class ESClient {
             {
                 System.out.println("search error:  " + status.toString());
             }
-            SearchHits hits = searchResponse.getHits();
-            result.append("hits", hits.getTotalHits());
-            SearchHit[] hitArray = hits.getHits();
-            JSONArray ja = new JSONArray();
-            System.out.println("result length:" + hitArray.length);
-            int i = 0;
-            for(i = 0; i < hitArray.length; i++)
-            {
-                SearchHit hit = hitArray[i];
-                JSONObject jo = new JSONObject(hit.getSourceAsMap());
-                ja.put(jo);
-
-            }
-            result.append("results", ja);
+            result = searchResponse.getHits();
+//            result.append("hits", hits.getTotalHits());
+//            SearchHit[] hitArray = hits.getHits();
+//            JSONArray ja = new JSONArray();
+//            System.out.println("result length:" + hitArray.length);
+//            int i = 0;
+//            for(i = 0; i < hitArray.length; i++)
+//            {
+//                SearchHit hit = hitArray[i];
+//                JSONObject jo = new JSONObject(hit.getSourceAsMap());
+//                ja.put(jo);
+//
+//            }
+//            result.append("results", ja);
 
         } catch (IOException e) {
             e.printStackTrace();
