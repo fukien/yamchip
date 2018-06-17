@@ -16,8 +16,23 @@
 	<div id="hd" class="ue-clear">
     	<div class="logo"></div>
         <div class="inputArea">
-        	<input type="text" class="searchInput" />
-            <input type="button" class="searchButton" />
+        	<!-- <input type="text" class="searchInput" />
+            <input type="button" class="searchButton" /> -->
+            <input type="text" name="keyword" style="width:300px;
+            height:40px;
+            font-size:14px;
+            margin-top: 1em;">
+
+             <input type="button" value="Search"  onclick="doClick()" style="width:100px;
+            height:46px;
+            background: #3385FF;
+            color:#fff;
+            border-bottom: 1px solid #2d78f4;
+            -webkit-appearance: none;
+            -webkit-border-radius:0;
+            outline: medium;
+            margin-left:-6px;
+            font-size: 15px;">
         </div>
     </div>
 
@@ -40,21 +55,35 @@
                 <div class="resultList">
                 	<div class="resultItem">
                     	<div class="itemHead">
-                        	<a href="http://www.uimaker.com"  target="_blank" class="title">Uimaker-专注<span class="keyWord">UI设计</span></a>
+                        	<a href="http://www.uimaker.com"  target="_blank" class="title">Lionel-Messi<span class="keyWord"> Messi </span></a>
                             <span class="divsion">-</span>
+                           
+                           <!-- 
                             <span class="fileType">
                             	<span class="label">设计分类：</span>
                                 <span class="value">后台界面</span>
                             </span>
+ 							-->
+
                             <span class="dependValue">
-                            	<span class="label">相关度：</span>
+                            	<span class="label">relevance：</span>
                                 <span class="value">91.78%</span>
                             </span>
+
                         </div>
                         <div class="itemBody">
-                        	UI，我们还为<span class="keyWord">UI设计</span>师提供UI设计教、UI设计素材、ICON、图标设计、手机UI、ui设计师招聘、软件界面设计、后台界面、后台模版等相关内容;很多题目一问出来就知道怎么回答是高EQ 应该从一些具体的事出发 唉。。。 下次我出一个肯定比它好 欧阳筱筱 （何时才能遇见那个命中的克星呢？） 你的分数为28分，恭喜你有高EQ。EQ高的人，在自信心、人际关系、工作表现、婚姻...
+                        	Lionel Andrés Messi Cuccittini[note 1] (Spanish pronunciation: [ljoˈnel anˈdɾez ˈmesi] (About this sound listen);[A] born 24 June 1987) is an Argentine professional footballer who plays as a forward for Spanish club Barcelona and the Argentine national team. Often considered the best player in the world and regarded by many as the greatest of all time,[9] Messi has a record-tying five Ballon d'Or awards,[note 2] four of which he won consecutively, and a record five European Golden Shoes. He has spent his entire professional career with Barcelona, where he has won 32 trophies, including nine La Liga titles, four UEFA Champions League titles, and six Copas del Rey. Both a prolific goalscorer and a creative playmaker, Messi holds the records for most official goals scored in La Liga (383), a La Liga season (50), a club football season in Europe (73), a calendar year (91), El Clásico (26), as well as those for most assists in La Liga (149) and the Copa América (11). He has scored over 600 senior career goals for club and country.
                         </div>
+
                         <div class="itemFoot">
+
+							<span class="info">
+                            	<a href="http://dbpedia.org/resource/Lionel_Messi">DBpedia, </a> 
+                            	<a href="http://en.wikipedia.org/wiki/Lionel_Messi">Wikipedia, </a> 
+                            	<a href="https://gate.d5.mpi-inf.mpg.de/webyago3spotlx/Browser?entityIn=Lionel_Messi&codeIn=eng">Yago</a> 
+                            </span>
+
+							<!-- 
                         	<span class="info">
                             	<label>设计师：</label>
                                 <span class="value">uimaker</span>
@@ -67,34 +96,53 @@
                             	<label>发布时间：</label>
                                 <span class="value">2013-12-12 12:12</span>
                             </span>
+                             -->
+
                         </div>
                     </div>          
                 </div>
                 <!-- 分页 -->
+
                 <div class="pagination ue-clear"></div>
+
                 <!-- 相关搜索 -->
                 <div class="dependSearch ue-clear">
                     <h6>Relevant Search</h6>
                     <div class="searchList">
                         <p>
-                            <a href="javascript:;">UI设计</a>
-                            <a href="javascript:;">UI设计师</a>
-                            <a href="javascript:;">图标设计</a>
-                            <a href="javascript:;">设计师</a>
+                            <a href="javascript:;">Diego_Maradona</a>
+                            <a href="javascript:;">Neymar</a>
+                            <a href="javascript:;">Ronaldo</a>
+                            
                         </p>
                         <p>
-                            <a href="javascript:;">后台界面</a>
-                            <a href="javascript:;">管理系统界面</a>
-                            <a href="javascript:;">界面欣赏</a>
-                            <a href="javascript:;">交互设计</a>
+                        	<a href="javascript:;">Ronaldinho</a>
+                            <a href="javascript:;">Cristiano_Ronaldo</a>
+                            <a href="javascript:;">Zinedine_Zidane</a>
                         </p>
                     </div>
                 </div>
                 
                 <!--结果中搜索-->
                 <div class="inputArea searchInResult">
-                    <input type="text" class="searchInput" />
-                    <input type="button" class="searchButton" />
+                   <!--  <input type="text" class="searchInput" />
+                    <input type="button" class="searchButton" /> -->
+
+					<input type="text" name="keyword" style="width:300px;
+		            height:40px;
+		            font-size:14px;
+		            margin-top: 1em;">
+
+		             <input type="button" value="Search"  onclick="doClick()" style="width:100px;
+		            height:46px;
+		            background: #3385FF;
+		            color:#fff;
+		            border-bottom: 1px solid #2d78f4;
+		            -webkit-appearance: none;
+		            -webkit-border-radius:0;
+		            outline: medium;
+		            margin-left:-6px;
+		            font-size: 15px;">
    
                 </div>
 
@@ -115,8 +163,6 @@
 		$('.searchList .searchItem').removeClass('current');
 		$(this).addClass('current');	
 	});
-	
-	
 	
 	$.each($('.subfieldContext'), function(i, item){
 		$(this).find('li:gt(2)').hide().end().find('li:last').show();		
@@ -158,7 +204,7 @@
 		callback :pageselectCallback
 	});
 	function pageselectCallback(page_id, jq) {
-		alert("当前页id(由0开始)：" + page_id + "，\n每页显示：" + this.items_per_page + "条数据");
+		// alert("当前页id(由0开始)：" + page_id + "，\n每页显示：" + this.items_per_page + "条数据");
 	}
 	
 	setHeight();
