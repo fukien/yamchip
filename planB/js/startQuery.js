@@ -1,22 +1,62 @@
 function startQuery(){
 	var query_keyword=$("#query_keyword").val();
-	alert(query_keyword);
+
+
+	// $.ajax({
+	// 	type: "POST",
+	// 	url: 'to_get.txt',
+	// 	dataType:"text",
+	// 	data:{
+	// 		keyword: query_keyword
+	// 	},
+
+	// });
+
+	// console.log("SENT DONE!");
+
+	// $.ajax({
+	// 	type: "GET",
+	// 	url: 'xml/main.xml',
+	// 	dataType:"xml",
+
+	// 	success : function(xml){
+	// 			alert('success');
+	// 			alert();
+	// 	},
+
+	// 	error: function(xml){
+	// 			alert("error" + data);
+	// 			return false;
+	// 	}
+
+	// });
 
 	$.ajax({
-		type: "GET",
-		url: 'data.json',
-		dataType:"json",
-		// data:{
-		// 	keyword: query_keyword
-		// },
-
-		success : function(data){
+			type: "GET",
+			url: 'xml/main.xml',
+			dataType: 'xml',
+			success : function(data){
 				alert('success');
-		},
-
-		error: function(data){
+				alert(data);
+				config_data = $(data);
+				navigation_chosen_img = config_data.find("navigation_chosen_img").first();
+				alert("XJBC" + navigation_chosen_img);
+				navigation_unchosen_img = config_data.find("navigation_unchosen_img").first();
+				graph_type_chosen_img = config_data.find("graph_type_chosen_img").first();
+				graph_type_unchosen_img = config_data.find("graph_type_unchosen_img").first();	
+				graph_type = config_data.find("graph_type").first();
+				var graph_type_id = config_data.find("graph_type_id");	
+				for (var i = 0; i < graph_type_id.length; i++){
+					graph_type_ids[i] = graph_type_id[i].innerHTML;
+				}
+		//		alert(graph_type_ids);
+				element_init();
+			},
+			error: function(data)
+			{
 				alert("error" + data);
-		}
+			}
+		});
 
-	});
+
 }
