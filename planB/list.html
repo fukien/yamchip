@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Query_Yamchip</title>
+	<title id = "header_title"></title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 	<link href="css/result.css" rel="stylesheet" type="text/css" />
 	<script src="js/jquery.js"></script>  
@@ -22,6 +22,8 @@
             $("document").ready(function(){
                 keyword = window.location.href.split("=")[1];
                 page = window.location.href.split("=")[2];
+
+                document.getElementById("header_title").innerHTML = keyword + " - Yamchip Search";
 
                 $(".resultItem").hide();
 
@@ -56,12 +58,12 @@
 
                         var temp0 = $("rls").html();
                         temp0 = temp0.replace(/{{RELEVANTSEARCH}}/g,
-                        "<p><a href=\"list.html?querykeyword=" + top6relevant[0] + "=1\">" + top6relevant[0] + "</a>"
-                        + "<a href=\"list.html?querykeyword=" + top6relevant[1] + "=1\">" + top6relevant[1] + "</a>" 
-                        + "<a href=\"list.html?querykeyword=" + top6relevant[2] + "=1\">" + top6relevant[2] + "</a></p>" 
-                        + "<p><a href=\"list.html?querykeyword=" + top6relevant[3] + "=1\">" + top6relevant[3] + "</a>" 
-                        + "<a href=\"list.html?querykeyword=" + top6relevant[4] + "=1\">" + top6relevant[4] + "</a>" 
-                        + "<a href=\"list.html?querykeyword=" + top6relevant[5] + "=1\">" + top6relevant[5] + "</a></p>");
+                        "<p><a style = \"font-size: 14px;\"href=\" list.html?querykeyword=" + top6relevant[0] + "=1\">" + top6relevant[0] + "</a>"
+                        + "<a style = \"font-size: 14px;\" href=\"list.html?querykeyword=" + top6relevant[1] + "=1\">" + top6relevant[1] + "</a>" 
+                        + "<a style = \"font-size: 14px;\" href=\"list.html?querykeyword=" + top6relevant[2] + "=1\">" + top6relevant[2] + "</a></p>" 
+                        + "<p><a style = \"font-size: 14px;\" href=\"list.html?querykeyword=" + top6relevant[3] + "=1\">" + top6relevant[3] + "</a>" 
+                        + "<a style = \"font-size: 14px;\" href=\"list.html?querykeyword=" + top6relevant[4] + "=1\">" + top6relevant[4] + "</a>" 
+                        + "<a style = \"font-size: 14px;\" href=\"list.html?querykeyword=" + top6relevant[5] + "=1\">" + top6relevant[5] + "</a></p>");
 
                         $("rls").html("");
                         $('rls').append(temp0);
@@ -83,13 +85,15 @@
                         ull.html("");
                         for (var i=(page-1)*10; i<10; i++) {
                             var item = data_json.results[i];
+                            var str_json = JSON.stringify(item.source);
+                            console.log(str_json);
                             var sub = item.source.subject.split("http://dbpedia.org/resource/")[1];
-                            var content = temp.replace(/{{TITLE}}/g, "<a href=\"info.html?=" + sub + "\">" + sub + "</a>");
+                            var content = temp.replace(/{{TITLE}}/g, "<a href=\"info.html?=" + sub + "=" + encodeURI(str_json) + "\">" + sub + "</a>");
                             content = content.replace(/{{VALUE}}/g, item.total_score);
                             content = content.replace(/{{KEYWORD}}/g, "");
-                            content = content.replace(/{{INFO_LINK}}/g, "<a href=\"http://dbpedia.org/resource/" +  sub + "\"> DBPEDIA,</a>" 
-                                + "<a href=\"http://en.wikipedia.org/wiki/" +  sub + "\"> WIKIPEDIA,</a>" 
-                                + "<a href=\"https://gate.d5.mpi-inf.mpg.de/webyago3spotlx/Browser?entityIn=" +  sub + "&codeIn=eng\"> YAGO</a>");
+                            content = content.replace(/{{INFO_LINK}}/g, "<a href=\"http://dbpedia.org/resource/" +  sub + "\" style = \"font-size: 14px;\"> DBPEDIA,</a>" 
+                                + "<a href=\"http://en.wikipedia.org/wiki/" +  sub + "\" style = \"font-size: 14px;\"> WIKIPEDIA,</a>" 
+                                + "<a href=\"https://gate.d5.mpi-inf.mpg.de/webyago3spotlx/Browser?entityIn=" +  sub + "&codeIn=eng\" style = \"font-size: 14px;\"> YAGO</a>");
                             ull.append(content);
                             if(i == total_item-1) {
                                 break;
@@ -161,8 +165,8 @@
                                     <span class="divsion">-</span>
                                    
                                     <span class="dependValue">
-                                        <span class="label">relevance：</span>
-                                        <span class="value" id = "value">{{VALUE}}</span>
+                                        <span class="label" style = "font-size: 14px;">relevance：</span>
+                                        <span class="value" id = "value" style="font-size:16px;">{{VALUE}}</span>
                                     </span>
                                     
                                 </div>
