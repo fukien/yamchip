@@ -166,7 +166,8 @@
 		if($('#main').hasClass('sideBarHide')){
 			$('#main').removeClass('sideBarHide');
 			$('#container').removeClass('sideBarHide');
-		}else{
+		}
+        else{
 			$('#main').addClass('sideBarHide');	
 			$('#container').addClass('sideBarHide');
 		}
@@ -178,7 +179,7 @@
 		current_page :0, //当前页码
 		items_per_page :9,
 		display_msg :true,
-		callback :pageselectCallback
+		// callback :pageselectCallback
 	});
 	function pageselectCallback(page_id, jq) {
 		// alert("当前页id(由0开始)：" + page_id + "，\n每页显示：" + this.items_per_page + "条数据");

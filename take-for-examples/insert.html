@@ -1,0 +1,140 @@
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>输入框下拉提示</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+}
+ 
+body{
+    font-size:14px;
+    font-family:"Microsoft yahei";
+}
+ 
+.divCon{
+    width:300px;
+    margin:100px auto;
+}
+#string{
+    width:200px;
+    height:30px;
+}
+#strul{
+    width:400px;
+}
+ 
+</style>
+</head>
+<body>
+    <form id="inform" name="inform" class="divCon" action="" method="post">
+        <input id="string" name="string" class="input" type="text/plain" value=""/>
+    </form>  
+    <ul id="strul">
+    </ul>
+<script type="text/javascript">
+    window.onload=function(){
+        var frm=document.getElementById("inform");
+        var input=document.getElementById("string");
+        var ul=document.getElementById("strul");
+        ul.style.position="absolute";
+        ul.style.top=(input.offsetTop+input.offsetHeight)+"px";
+        ul.style.left=input.offsetLeft+"px";
+        var arr=["a","aa","aaa","b","bb","bbb","aab"];
+        var len=arr.length;
+         
+        //根据输入匹配，显示下拉框
+        input.selectedIndex=-1;
+        input.focus();
+        input.onkeyup=function(event){
+            ul.innerHTML="";
+            ul.style.borderWidth="1px";
+            ul.style.borderStyle="solid";
+            ul.style.borderColor="#999";
+            var value=input.value;  
+            alert(value);
+	
+            if(value){
+                var reg=new RegExp("^"+value+"+");//当输入框为空的时候会报错
+                for(var i=0;i<len;i++){
+                    if(reg.test(arr[i])){
+                        var li=document.createElement("li");
+                        //匹配部分变粗
+                        var matchlen=value.length;
+                        var string=arr[i].substr(matchlen);
+                        li.innerHTML="<strong>"+value+"</strong>"+string;
+                        li.style.listStyle="none";
+                        ul.appendChild(li);
+                    }
+                }
+            }
+            //获取所有的li节点
+            var li=document.getElementsByTagName("li");
+            for(var j=0,lilen=li.length;j<lilen;j++){
+                li[j].onmouseover=function(){
+                    this.style.backgroundColor="#ececec";
+                }
+                li[j].onmouseout=function(){
+                    this.style.backgroundColor="#fff";
+                }
+                li[j].onclick=function(){
+                    input.value=this.innerText||this.textContent;
+                    ul.innerHTML="";
+                    ul.style.border="none";
+                }
+            }
+             
+            input.options=li;
+            event=event||window.event;//获取事件
+            //var kc=event.keyCode||event.charCode;
+            switch(event.keyCode){
+                case 38://上箭头
+                    clearcolor(this);
+                    this.selectedIndex--;
+                    if(this.selectedIndex<0){
+                        this.selectedIndex=this.options.length-1;
+                    }
+                    //this.value=this.options[this.selectedIndex].innerHTML;
+                    paintcolor(this);
+                    break;
+                case 40://下箭头
+                    clearcolor(this);
+                    this.selectedIndex++;
+                    if(this.selectedIndex>this.options.length-1){
+                        this.selectedIndex=0;
+                    }
+                    //this.value=this.options[this.selectedIndex].innerHTML;
+                    paintcolor(this);
+                    break;
+                case 13://回车
+                    if(this.selectedIndex>=0){
+                        var str=this.options[this.selectedIndex].innerHTML;
+                        this.value=str.replace(/[<strong><\/strong>]/g,"");
+                    }
+                    ul.innerHTML="";
+                    ul.style.border="none";
+                    break;
+            }
+             
+        }
+         
+    }
+     
+    function clearcolor(target){
+        if(target.selectedIndex>=0){
+            target.options[target.selectedIndex].style.backgroundColor="#fff";
+        }
+    }
+    function paintcolor(target){
+        if(target.selectedIndex>=0){
+            target.options[target.selectedIndex].style.backgroundColor="#ececec";
+        }
+    }
+</script>
+</body>
+</html>
+
