@@ -1,18 +1,19 @@
 function startQuery(){
 	var query_keyword=$("#query_keyword").val();
 
+	$.ajax({
+		type: "POST",
+		url: '',
+		dataType: "text",
 
-	// $.ajax({
-	// 	type: "POST",
-	// 	url: 'to_get.txt',
-	// 	dataType:"text",
-	// 	data:{
-	// 		keyword: query_keyword
-	// 	},
+		data:{
+			keyword: query_keyword
+		},
 
-	// });
+	});
 
-	// console.log("SENT DONE!");
+    console.log("what the hell");
+
 
 	$.ajax({
 		type: "GET",
@@ -31,6 +32,18 @@ function startQuery(){
 
 	});
 
+
+	// $.ajax({
+	// 	type: "POST",
+	// 	url: 'to_get.txt',
+	// 	dataType:"text",
+	// 	data:{
+	// 		keyword: query_keyword
+	// 	},
+
+	// });
+
+	// console.log("SENT DONE!");
 	// $.ajax({
 	// 		type: "GET",
 	// 		url: 'data.json',

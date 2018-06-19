@@ -157,11 +157,14 @@
             <p class="mobile_link">Scan QR code for more info</p>
         </div>
     </div>
+
+
     <script type="text/javascript" src="js/jquery-1.9.min.js"></script>
-    <script type="text/javascript" src="js/startQuery.js"></script>
+    <script type="text/javascript" src="js/homepage.js"></script>
     <script type="text/javascript">
         function doClick() {
-           $("#query_button").click(startQuery);
+            var query_keyword=$("#query_keyword").val();
+            window.open("list.html?querykeyword=" + query_keyword + "=" + 1);   
     }
     </script>
 
