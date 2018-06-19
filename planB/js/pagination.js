@@ -1,4 +1,5 @@
-jQuery.fn.pagination = function(maxentries, opts) {
+jQuery.fn.pagination = function(maxentries, data_json, opts) {
+
 	opts = jQuery.extend({
 				items_per_page : 10, // 每页显示多少条记录
 				current_page : 0,      //当前页码
