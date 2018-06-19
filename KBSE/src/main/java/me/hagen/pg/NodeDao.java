@@ -34,7 +34,7 @@ public class NodeDao {
 		n.setPscore2(rs.getDouble("pscore2"));
 		return n;
 	}
-	public Node get(Connection conn, String id) throws SQLException{
+	public Node get(Connection conn, String id){
 		String sql = "select id,name,pscore,pscore2 from node where id = ?";
 		try(PreparedStatement psmt = conn.prepareStatement(sql)){
 			psmt.setString(1, id);
@@ -43,6 +43,8 @@ public class NodeDao {
 					return map(rs);
 				}
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return null;
 	}

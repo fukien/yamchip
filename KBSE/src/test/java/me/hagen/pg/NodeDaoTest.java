@@ -20,9 +20,9 @@ public class NodeDaoTest {
 			List<Node> node = dao.prefixMatch(conn, "United", 10);
 			for(Node n : node){
 				System.out.println(n.getName());
-			}
-		}
-	}
+		}			}
+
+}
 	@Test
 	public void testAdd() throws ClassNotFoundException, SQLException, IOException {
 		try(Connection conn = Conn.getConnection()){
