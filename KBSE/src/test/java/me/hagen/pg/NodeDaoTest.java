@@ -7,7 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import org.junit.Test;
@@ -23,7 +25,83 @@ public class NodeDaoTest {
 		}			}
 
 }
-	@Test
+	//@Test
+	public void testUpdate2() throws SQLException, IOException
+	{
+		try(Connection conn = Conn.getConnection()){
+			conn.setAutoCommit(false);
+			//Statement stmt = conn.createStatement();
+			PreparedStatement psmt = conn.prepareStatement("update node set wsum=? where id =?");
+			String url = "/E/git/dbp38-node-weight.tsv";
+			BufferedReader br = new BufferedReader(new FileReader(url));
+			String ln = null;
+			int i = 0;
+			while((ln=br.readLine())!=null){
+				String[] arr = ln.split("\t");
+				if(arr[0].startsWith("<http://dbpedia.org/resource/")){
+					i++;
+					//if(i<172000)continue;
+					String id = arr[0].replaceAll("'", "''");
+					double key = Double.parseDouble(arr[1]);
+					//stmt.addBatch("update node set diverse="+key+" where id = E'"+id+"'");
+					psmt.setDouble(1, key);
+					psmt.setString(2, id);
+					psmt.addBatch();
+					
+					//System.out.println(i);
+					if(i%10000==0){
+						psmt.executeBatch();
+						conn.commit();
+						System.out.println(i);
+					}
+				}
+			}
+			br.close();
+			psmt.executeBatch();
+			conn.commit();
+			conn.setAutoCommit(true);
+		}
+		
+	}
+	//@Test
+	public void testUpdate() throws SQLException, IOException
+	{
+		try(Connection conn = Conn.getConnection()){
+			conn.setAutoCommit(false);
+			//Statement stmt = conn.createStatement();
+			PreparedStatement psmt = conn.prepareStatement("update node set diverse=? where id =?");
+			String url = "/E/git/diverse095.info";
+			BufferedReader br = new BufferedReader(new FileReader(url));
+			String ln = null;
+			int i = 0;
+			while((ln=br.readLine())!=null){
+				String[] arr = ln.split("\t");
+				if(arr[0].startsWith("<http://dbpedia.org/resource/")){
+					i++;
+					if(i<172000)continue;
+					String id = arr[0].replaceAll("'", "''");
+					double key = Double.parseDouble(arr[1]);
+					//stmt.addBatch("update node set diverse="+key+" where id = E'"+id+"'");
+					psmt.setDouble(1, key);
+					psmt.setString(2, id);
+					psmt.addBatch();
+					
+					//System.out.println(i);
+					if(i%10000==0){
+						psmt.executeBatch();
+						conn.commit();
+						System.out.println(i);
+					}
+				}
+			}
+			br.close();
+			psmt.executeBatch();
+			conn.commit();
+			conn.setAutoCommit(true);
+		}
+		
+	}
+	//@Test
 	public void testAdd() throws ClassNotFoundException, SQLException, IOException {
 		try(Connection conn = Conn.getConnection()){
 			NodeDao dao = new NodeDao();
