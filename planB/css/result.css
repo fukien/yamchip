@@ -2,7 +2,7 @@
 html{*overflow:auto;}
 #hd{padding:20px 10px;}
 #bd{margin-bottom:40px;}
-.logo{float:left;margin-right:30px; height:33px;}
+.logo{float:left;margin-right:30px; height:54px;}
 /*input搜索区域*/
 .inputArea{float:left;position:relative;}
 .inputArea .searchInput{border:1px solid #bfbfbf;padding:0 15px;outline:none;height:35px;*line-height:35px;width:350px; background:url(../img/inputbg.png);font-size:14px; padding-top: 0px;}

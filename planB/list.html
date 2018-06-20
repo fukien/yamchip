@@ -89,6 +89,8 @@
                                 content = content.replace(/{{INFO_LINK}}/g, "<a href=\"http://dbpedia.org/resource/" +  sub + "\" style = \"font-size: 14px;\"> DBPEDIA,</a>" 
                                     + "<a href=\"http://en.wikipedia.org/wiki/" +  sub + "\" style = \"font-size: 14px;\"> WIKIPEDIA,</a>" 
                                     + "<a href=\"https://gate.d5.mpi-inf.mpg.de/webyago3spotlx/Browser?entityIn=" +  sub + "&codeIn=eng\" style = \"font-size: 14px;\"> YAGO</a>");
+                                content = content.replace(/{{ABSTARCT}}/g, "The Pittsburgh Tribune-Review, also known as \"the Trib,\" is the second largest daily newspaper serving metropolitan Pittsburgh, Pennsylvania, in the United States. Founded on August 22, 1811 as the Greensburg Gazette and in 1889 consolidated with several papers into the Greensburg Tribune-Review, the paper circulated only in the eastern suburban counties of Westmoreland and parts of Indiana and Fayette until May, 1992 when it began serving all of the Pittsburgh metropolitan area after a strike at the two Pittsburgh dailies, the Pittsburgh Post-Gazette and Pittsburgh Press, deprived the city of a newspaper for several months.");
+
                                 ull.append(content);
                                 if(i == total_item-1) {
                                     break;
@@ -105,7 +107,6 @@
                             display_msg :true,
                             // callback :pageselectCallback
                         });
-
                     },
 
                     error : function(data){
@@ -123,7 +124,7 @@
 
 <div id="container">
 	<div id="hd" class="ue-clear">
-    	<div class="logo"></div>
+    	<a href="homepage.html"><div class="logo"></div></a>
         <div class="inputArea">
         	<!-- <input type="text" class="searchInput" />
             <input type="button" class="searchButton" /> -->
@@ -172,9 +173,9 @@
                                     <span class="dependValue">
                                         <span class="label" style = "font-size: 14px;">relevance：</span>
                                         <span class="value" id = "value" style="font-size:16px;">{{VALUE}}</span>
-                                    </span>
-                                    
+                                    </span>     
                                 </div>
+                                <div class="itemBody">{{ABSTARCT}}</div>
                                 <div class="itemFoot">
                                     <span class="info">
                                         {{INFO_LINK}}

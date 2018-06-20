@@ -39,7 +39,7 @@ a{color:#0080cc; font-size: 20px}
 a:hover{color:#267A01;text-decoration:underline;}
 /*logo样式*/
 /*.logo{width:160px;height:47px;padding:0 5px;background: url(../img/logo1.png) no-repeat center center #fff;}*/
-.logo{width:160px;height:47px;padding:0 5px;background: url(../img/logo_cut.png) no-repeat center center #fff; padding-top: 0px;}*/
+.logo{width:160px;height:47px;padding:0 5px;background: url(../img/new_logo_cut.png) no-repeat center center #fff; padding-top: 0px;}*/
 
 /*choose样式*/
 .choose{float:left;margin-right:15px;white-space:nowrap;}
