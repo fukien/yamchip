@@ -71,15 +71,24 @@ jQuery.fn.pagination = function(maxentries, data_json, ull, uls, resultItem, opt
             for (var i=(current_page)*10; i<(current_page+1)*10; i++) {
                 var item = data_json.results[i];
                 var str_json = JSON.stringify(item.source);
-                var sub = item.source.subject.split("http://dbpedia.org/resource/")[1];
+                var sub_url = item.source.subject;
+                var sub = sub_url.split("http://dbpedia.org/resource/")[1];
                 
-                var content = temp.replace(/{{TITLE}}/g, "<a href=\"info.html?=" + sub + "=" + encodeURI(str_json) + "\">" + sub + "</a>");
+                var content = temp.replace(/{{TITLE}}/g, "<a href=\"info.html?=" + sub + "=" + encodeURI(sub_url) + "\">" + sub + "</a>");
                 content = content.replace(/{{VALUE}}/g, item.total_score);
                 content = content.replace(/{{KEYWORD}}/g, "");
                 content = content.replace(/{{INFO_LINK}}/g, "<a href=\"http://dbpedia.org/resource/" +  sub + "\" style = \"font-size: 14px;\"> DBPEDIA,</a>" 
                 + "<a href=\"http://en.wikipedia.org/wiki/" +  sub + "\" style = \"font-size: 14px;\"> WIKIPEDIA,</a>" 
                 + "<a href=\"https://gate.d5.mpi-inf.mpg.de/webyago3spotlx/Browser?entityIn=" +  sub + "&codeIn=eng\" style = \"font-size: 14px;\"> YAGO</a>");
                 
+                content = content.replace(/{{ABSTARCT}}/g, "The Pittsburgh Tribune-Review, also" 
+                	+ "known as \"the Trib,\" is the second largest daily newspaper serving metropolitan Pittsburgh, Pe"
+                	+ "nsylvania, in the United States. Founded on August 22, 1811 as the Greensburg Gazette " 
+                	+ "and in 1889 consolidated with several papers into the Greensburg Tribune-Review, the paper circulated "
+                	+ "only in the eastern suburban counties of Westmoreland and parts of Indiana and Fayette until May, 1992 when" 
+                	+ "it began serving all of the Pittsburgh metropolitan area after a strike at the two Pittsburgh dailies, the " 
+                	+ "Pittsburgh Post-Gazette and Pittsburgh Press, deprived the city of a newspaper for several months.");
+
      			ull.append(content);
                 if(i == maxentries-1) {
                    break;
