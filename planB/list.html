@@ -31,7 +31,7 @@
 
                 $.ajax({
                     type: "GET",
-                    url: 'data.txt',
+                    url: 'data_odd.txt',
                     dataType: 'text',
 
                     data : {
@@ -71,36 +71,41 @@
 
                         document.getElementById('query_time').innerHTML = query_time/1000;
                         document.getElementById('total_item').innerHTML = total_item;
-                        
+
+                        var ull = $(".ull");
+                        var uls = $(".uls");
+                        var temp = uls.html();
+                        ull.html("");
+                        if (page == 1) {
+                            for (var i=(page-1)*10; i<10; i++) {
+                                var item = data_json.results[i];
+                                var str_json = JSON.stringify(item.source);
+                                var sub_url = item.source.subject;
+                                var sub = sub_url.split("http://dbpedia.org/resource/")[1];
+                                var content = temp.replace(/{{TITLE}}/g, "<a href=\"info.html?=" + sub + "=" + encodeURI(sub_url) + "\">" + sub + "</a>");
+                                
+                                content = content.replace(/{{VALUE}}/g, item.total_score);
+                                content = content.replace(/{{KEYWORD}}/g, "");
+                                content = content.replace(/{{INFO_LINK}}/g, "<a href=\"http://dbpedia.org/resource/" +  sub + "\" style = \"font-size: 14px;\"> DBPEDIA,</a>" 
+                                    + "<a href=\"http://en.wikipedia.org/wiki/" +  sub + "\" style = \"font-size: 14px;\"> WIKIPEDIA,</a>" 
+                                    + "<a href=\"https://gate.d5.mpi-inf.mpg.de/webyago3spotlx/Browser?entityIn=" +  sub + "&codeIn=eng\" style = \"font-size: 14px;\"> YAGO</a>");
+                                ull.append(content);
+                                if(i == total_item-1) {
+                                    break;
+                                }
+                            }
+                            $(".resultItem").show();
+                        }
+
                         //分页
-                        $(".pagination").pagination(total_item, data_json, {
+                        var resultItem = $(".resultItem");
+                        $(".pagination").pagination(total_item, data_json, ull, uls, resultItem, {
                             current_page :0, //当前页码
                             items_per_page :10,
                             display_msg :true,
                             // callback :pageselectCallback
                         });
 
-                        var ull = $("ull");
-                        var temp = $("uls").html();
-                        ull.html("");
-                        for (var i=(page-1)*10; i<10; i++) {
-                            var item = data_json.results[i];
-                            var str_json = JSON.stringify(item.source);
-                            console.log(str_json);
-                            var sub = item.source.subject.split("http://dbpedia.org/resource/")[1];
-                            var content = temp.replace(/{{TITLE}}/g, "<a href=\"info.html?=" + sub + "=" + encodeURI(str_json) + "\">" + sub + "</a>");
-                            content = content.replace(/{{VALUE}}/g, item.total_score);
-                            content = content.replace(/{{KEYWORD}}/g, "");
-                            content = content.replace(/{{INFO_LINK}}/g, "<a href=\"http://dbpedia.org/resource/" +  sub + "\" style = \"font-size: 14px;\"> DBPEDIA,</a>" 
-                                + "<a href=\"http://en.wikipedia.org/wiki/" +  sub + "\" style = \"font-size: 14px;\"> WIKIPEDIA,</a>" 
-                                + "<a href=\"https://gate.d5.mpi-inf.mpg.de/webyago3spotlx/Browser?entityIn=" +  sub + "&codeIn=eng\" style = \"font-size: 14px;\"> YAGO</a>");
-                            ull.append(content);
-                            if(i == total_item-1) {
-                                break;
-                            }
-                        };
-
-                        $(".resultItem").show();
                     },
 
                     error : function(data){
@@ -157,8 +162,8 @@
             <div class="resultArea">
 
                 <div class="resultList">
-                    <ull>
-                        <uls>
+                    <ull class="ull">
+                        <uls class="uls">
                             <div class="resultItem" id = "resultItem">
                                 <div class="itemHead">
                                     <a class="title" >{{TITLE}}<span class="keyWord">{{KEYWORD}}</span></a>

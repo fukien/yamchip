@@ -1,4 +1,4 @@
-jQuery.fn.pagination = function(maxentries, data_json, opts) {
+jQuery.fn.pagination = function(maxentries, data_json, ull, uls, resultItem, opts) {
 
 	opts = jQuery.extend({
 				items_per_page : 10, // 每页显示多少条记录
@@ -23,10 +23,12 @@ jQuery.fn.pagination = function(maxentries, data_json, opts) {
 		function numPages() {
 			return Math.ceil(maxentries / opts.items_per_page);
 		}
+
 		/**
 		 * 计算页码
 		 */
-		function getInterval() {
+
+		function getInterval() { 
 			var ne_half = Math.ceil(opts.num_display_entries / 2);
 			var np = numPages();
 			var upper_limit = np - opts.num_display_entries;
@@ -43,6 +45,9 @@ jQuery.fn.pagination = function(maxentries, data_json, opts) {
 		function pageSelected(page_id, evt) {
 			var page_id = parseInt(page_id);
 			current_page = page_id;
+
+			repaintAccordingToPage(current_page);
+
 			drawLinks();
 			var continuePropagation = opts.callback(page_id, panel);
 			if (!continuePropagation) {
@@ -54,6 +59,37 @@ jQuery.fn.pagination = function(maxentries, data_json, opts) {
 			}
 			return continuePropagation;
 		}
+
+		/**
+		 * 页面显示条目内容刷新
+		 */
+		 function repaintAccordingToPage(current_page) {
+
+		 	ull.html("");
+		 	var temp = uls.html();
+
+            for (var i=(current_page)*10; i<(current_page+1)*10; i++) {
+                var item = data_json.results[i];
+                var str_json = JSON.stringify(item.source);
+                var sub = item.source.subject.split("http://dbpedia.org/resource/")[1];
+                
+                var content = temp.replace(/{{TITLE}}/g, "<a href=\"info.html?=" + sub + "=" + encodeURI(str_json) + "\">" + sub + "</a>");
+                content = content.replace(/{{VALUE}}/g, item.total_score);
+                content = content.replace(/{{KEYWORD}}/g, "");
+                content = content.replace(/{{INFO_LINK}}/g, "<a href=\"http://dbpedia.org/resource/" +  sub + "\" style = \"font-size: 14px;\"> DBPEDIA,</a>" 
+                + "<a href=\"http://en.wikipedia.org/wiki/" +  sub + "\" style = \"font-size: 14px;\"> WIKIPEDIA,</a>" 
+                + "<a href=\"https://gate.d5.mpi-inf.mpg.de/webyago3spotlx/Browser?entityIn=" +  sub + "&codeIn=eng\" style = \"font-size: 14px;\"> YAGO</a>");
+                
+     			ull.append(content);
+                if(i == maxentries-1) {
+                   break;
+                }
+            }
+
+            $(".resultItem").css("display", "");
+            // resultItem.show();   // seems to be wrong in this js
+		}
+
 
 		/**
 		 * 链接
@@ -185,6 +221,8 @@ jQuery.fn.pagination = function(maxentries, data_json, opts) {
 			drawLinks();
 		}
 		$(this).find(".goto button").live("click",function(evt){
+
+
 			var setPageNo = $(this).parent().find("input").val();
 			if(setPageNo!=null && setPageNo!=""&&setPageNo>0&&setPageNo<=numPages()){
 				pageSelected(setPageNo-1, evt);
