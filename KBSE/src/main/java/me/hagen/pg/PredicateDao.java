@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PredicateDao {
 	public Predicate map(ResultSet rs) throws SQLException{
@@ -25,5 +27,17 @@ public class PredicateDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	public List<Predicate> prefixMatch(Connection conn, String name, int top) throws SQLException{
+		String sql = "select id,weight from predicate where id like '<http://dbpedia.org/ontology/"+name+"%>' limit "+top;
+		List<Predicate> nodeList = new ArrayList<Predicate>();
+		try(PreparedStatement psmt = conn.prepareStatement(sql)){
+			try(ResultSet rs = psmt.executeQuery()){
+				while(rs.next()){
+					nodeList.add(map(rs));
+				}
+			}
+		}
+		return nodeList;
 	}
 }

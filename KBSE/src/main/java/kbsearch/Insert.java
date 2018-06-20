@@ -11,6 +11,7 @@ import java.util.Map;
 //import net.sf.json.JSONArray;
 
 import ES.ESClient;
+import me.hagen.kg.TDBConnection;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,16 +24,16 @@ public class Insert extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        //System.out.println("aaaa");
+        System.out.println("aaaa");
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         System.out.println("test");
 
         //将接受到的数据放入
         String jsonStr="";
-        request.getParameter(jsonStr);
-        JSONArray json = new JSONArray(jsonStr);
-
+        JSONArray json =new JSONArray(request.getParameter(jsonStr));
+        //JSONArray json = (jsonStr);
+        TDBConnection tdb=TDBConnection.getConnection();
         //将jsonarray对象转换为单个json并进行解析。
        //先将对象转成json数组
         for(int i=0;i<json.length();i++)
@@ -44,7 +45,8 @@ public class Insert extends javax.servlet.http.HttpServlet {
             String s;
             String object;
             String o;
-            if(job.get("subject_new")=="true")
+            System.out.println(job.get("subject_new"));
+            if(job.get("subject_new").equals("true"))
             {
                 subject=(String)job.get("subject");
                 s="<"+subject+">";
@@ -56,46 +58,33 @@ public class Insert extends javax.servlet.http.HttpServlet {
             }
             String predicate=(String)job.get("predicate");
             String p="<"+predicate+">";
-            if(job.get("object_string")=="false")
+            if(job.get("object_string").equals("false"))
             {
                 object=(String)job.get("object");
                 o="<"+object+">";
-                //insert(s,p,o);
+                tdb.insert(s,p,o);
             }
             else
             {
                 Map<String, Object> source = new HashMap<String,Object>();
                 object=(String)job.get("object");
-                //  insert(s,p,object);
+                tdb.insert(s,p,object);
                 time="" + System.currentTimeMillis();
                 String value=predicate+" "+object;
                 source.put(time,value);
 
                 ESClient client=new ESClient();
-                client.ESC_insert(source,subject);
+                if(client.ESC_insert(source,subject))
+                    System.out.println("yes");
+                else
+                    System.out.println("no");
             }
         }
 
 
     }
 
-    /*
-    private String readJsonFromRequestBody(HttpServletRequest req){
-        StringBuffer jsonBuf=new StringBuffer();
-        char[] buf=new char[2048];
-        int len=-1;
-        try{
-            BufferedReader reader=req.getReader();
-            while((len=reader.read(buf))!=-1){
-                jsonBuf.append(new String(buf,0,len));
-            }
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-        return jsonBuf.toString();
-    }
-    */
+
 
 }
 
