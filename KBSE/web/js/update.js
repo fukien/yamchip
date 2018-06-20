@@ -5,7 +5,7 @@ var PREDICATE = "predicate";
 var OBJECT = "object";
 var SUBJECTNEW = "subject_new";
 var OBJECTSTRING = "object_string";
-var prefix = "http://..."
+var prefix = "http://dbpedia.org/resource/"
 
 function add_row()
 {
@@ -136,5 +136,22 @@ function submmit(){
 	if(error == true){
 		return;
 	}
+ /*
+	$.ajax({
+        type: "GET",
+        url: 'http://10.48.99.130:8080/KBSE/Insert',
+        dataType: 'text',
+        data: {
+            data:relations
+        },
+        success : function(data){
+            alert('success:' + data)
+
+        },
+        error: function(data)
+        {
+            alert("error" + data);
+        }
+    });*/
 	alert(JSON.stringify(relations));
 }
