@@ -103,6 +103,12 @@
     <artifactId>jena-rdfconnection</artifactId>
     <version>3.6.0</version>
 </dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.3.5</version>
+</dependency>
+
     </dependencies>
 
 

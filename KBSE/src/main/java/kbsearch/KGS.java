@@ -30,6 +30,7 @@ public class KGS extends HttpServlet {
 	    			+ "optional {?o <http://xmlns.com/foaf/0.1/name> ?oname  } ."
 	    			+ "}";
 	    	TDBConnection conn = TDBConnection.getConnection();
+	    	TDBConnection conn39 = TDBConnection.getConnection39();
 	    	QResultSet rs = conn.sparqlQuery(sparql1);
 	    	JSONArray array = new JSONArray();
 	    	Map<String,JSONObject> hash = new HashMap<>();
@@ -51,10 +52,20 @@ public class KGS extends HttpServlet {
 	    		}
 	    		array.put(obj);
 	    	}
+	    	rs.close();
+	    	rs = conn39.getAbstract(suffix);
+	    	while(rs.hasNext()){
+	    		JSONObject obj = new JSONObject();
+	    		QuerySolution qs = rs.next();
+	    		obj.put("predicate", qs.get("p").toString());
+	    		obj.put("object", qs.get("o").toString());
+	    		array.put(obj);
+	    	}
 	    	//JSONObject res = new JSONObject();
 	    	res.put("relation", array);
 	    	rs.close();
 	    	conn.close();
+	    	conn39.close();
 	    	response.getWriter().println(res.toString());
 	    	response.getWriter().close();
 	    }
