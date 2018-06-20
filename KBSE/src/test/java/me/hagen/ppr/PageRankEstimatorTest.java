@@ -14,7 +14,7 @@ import me.hagen.pg.NodeDao;
 
 public class PageRankEstimatorTest {
 
-	@Test
+	//@Test
 	public void testPageRankEstimator() throws SQLException {
 		String id = "<http://dbpedia.org/resource/Xi_Jinping>";
 		//String id = "<http://dbpedia.org/resource/Jinping_District>";

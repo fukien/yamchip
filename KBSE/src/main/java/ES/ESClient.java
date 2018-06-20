@@ -162,8 +162,6 @@ public class ESClient {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
 }

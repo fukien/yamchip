@@ -1,0 +1,25 @@
+#whole_body{
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;
+	
+}
+td{
+	padding:5px 5px 5px 0;
+}
+ul{
+	max-height:100px;
+	overflow:scroll;
+}
+
+.menu:hover{
+	background-color:#1eb8ff
+}
+#img_logo{
+	margin-bottom:10px;
+}
+
+#insert_table{
+	margin-top:10px;
+	margin-bottom:10px;
+}

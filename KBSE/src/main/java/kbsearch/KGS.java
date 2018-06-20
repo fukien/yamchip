@@ -20,6 +20,16 @@ public class KGS extends HttpServlet {
 
 	    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
 	    	response.setContentType("text/html;charset=utf-8");
+			response.setContentType("text/html;charset=utf-8");
+			// 允许该域发起跨域请求
+			response.setHeader("Access-Control-Allow-Origin", "*");//*允许任何域
+			// 允许的外域请求方式
+			response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+			// 在999999秒内，不需要再发送预检验请求，可以缓存该结果
+			response.setHeader("Access-Control-Max-Age", "999999");
+			// 允许跨域请求包含某请求头,x-requested-with请求头为异步请求
+			response.setHeader("Access-Control-Allow-Headers",
+					"x-requested-with");
 	    	String suffix = request.getParameter("suffix");
 	    	JSONObject res = new JSONObject();
 	    	if(!suffix.startsWith("http://"))suffix = "http://dbpedia.org/resource/"+suffix;
