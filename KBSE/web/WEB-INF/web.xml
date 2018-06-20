@@ -7,16 +7,29 @@
         <servlet-name>KBS</servlet-name>
         <servlet-class>kbsearch.KBS</servlet-class>
     </servlet>
+
+    <servlet-mapping>
+        <servlet-name> KBS</servlet-name>
+        <url-pattern>/KBSearch</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>Insert</servlet-name>
         <servlet-class>kbsearch.Insert</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name> KBS</servlet-name>
-        <url-pattern>/KBSearch</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name> Insert</servlet-name>
         <url-pattern>/Insert</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>KGS</servlet-name>
+        <servlet-class>kbsearch.KGS</servlet-class>
+
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name> KGS</servlet-name>
+        <url-pattern>/KGSearch</url-pattern>
     </servlet-mapping>
 </web-app>

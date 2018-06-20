@@ -10,12 +10,15 @@ import java.util.List;
 public class NodeDao {
 
 	public void add(Connection conn, Node n) throws SQLException{
-		String sql = "insert into node values(?,?,?,?)";
+		String sql = "insert into node(id,name,pscore,pscore2,diverse,wsum,wsum2) values(?,?,?,?,?)";
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		psmt.setString(1, n.getId());
 		psmt.setString(2, n.getName());
 		psmt.setDouble(3, n.getPscore());
 		psmt.setDouble(4, n.getPscore2());
+		psmt.setDouble(5, n.getDiverse());
+		psmt.setDouble(6, n.getWsum());
+		psmt.setDouble(7, n.getWsum2());
 		psmt.executeUpdate();
 		psmt.close();
 	}
@@ -26,16 +29,31 @@ public class NodeDao {
 		psmt.executeUpdate();
 		psmt.close();
 	}
+	public void updatePrank(Connection conn,String id, double prank) throws SQLException{
+		PreparedStatement psmt = conn.prepareStatement("update node set pscore=? where id =?");
+		psmt.setDouble(1, prank);
+		psmt.setString(2, id);
+		psmt.executeUpdate();
+	}
+	public void updateDiversePrank(Connection conn,String id, double prank) throws SQLException{
+		PreparedStatement psmt = conn.prepareStatement("update node set pscore2=? where id =?");
+		psmt.setDouble(1, prank);
+		psmt.setString(2, id);
+		psmt.executeUpdate();
+	}
 	public Node map(ResultSet rs) throws SQLException{
 		Node n = new Node();
 		n.setId(rs.getString("id"));
 		n.setName(rs.getString("name"));
 		n.setPscore(rs.getDouble("pscore"));
 		n.setPscore2(rs.getDouble("pscore2"));
+		n.setDiverse(rs.getDouble("diverse"));
+		n.setWsum(rs.getDouble("wsum"));
+		n.setWsum2(rs.getDouble("wsum2"));
 		return n;
 	}
 	public Node get(Connection conn, String id){
-		String sql = "select id,name,pscore,pscore2 from node where id = ?";
+		String sql = "select id,name,pscore,pscore2,diverse,wsum,wsum2 from node where id = ?";
 		try(PreparedStatement psmt = conn.prepareStatement(sql)){
 			psmt.setString(1, id);
 			try(ResultSet rs = psmt.executeQuery()){
@@ -48,9 +66,8 @@ public class NodeDao {
 		}
 		return null;
 	}
-	
 	public List<Node> prefixMatch(Connection conn,String name,int top) throws SQLException{
-		String sql = "select id,name,pscore,pscore2 from node where name like '"+name+"%' order by pscore desc limit "+top;
+		String sql = "select id,name,pscore,pscore2,diverse,wsum,wsum2 from node where name like '"+name+"%' order by pscore desc limit "+top;
 		List<Node> nodeList = new ArrayList<Node>();
 		try(PreparedStatement psmt = conn.prepareStatement(sql)){
 			try(ResultSet rs = psmt.executeQuery()){
