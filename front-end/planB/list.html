@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title id = "header_title"></title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<link href="css/result.css" rel="stylesheet" type="text/css" />
+	<script src="js/jquery.js"></script>  
+    <script src="js/list.js"></script>  
+
+
+    <link rel="shortcut icon" href="images/yumei_yam_chips_cumin.jpg">
+    
+    <script  type="text/javascript" >
+            var keyword = "";
+            var data_json = {};
+            var total_item = 0;
+            var page = 0;
+            var top6relevant = new Array(); // 6 relevant searches
+
+            $("document").ready(function(){
+                keyword = window.location.href.split("=")[1];
+                page = window.location.href.split("=")[2];
+
+                document.getElementById("header_title").innerHTML = keyword + " - Yamchip Search";
+
+                $(".resultItem").hide();
+
+                var start_date = new Date();
+
+                $.ajax({
+                    type: "GET",
+                    url: 'data_odd.txt',
+                    dataType: 'text',
+
+                    data : {
+                        "keyword": keyword
+                    },
+
+                    success : function(data){
+                        var end_date = new Date();
+                        var query_time = end_date.getMilliseconds() - start_date.getMilliseconds();
+                        data_json = JSON.parse(data);
+                        total_item = data_json.count;
+
+                        if (total_item > 6) {
+                            for (var i=0; i < 6; i ++) {
+                                var x = data_json.results[i].source.subject.split("http://dbpedia.org/resource/")[1];
+                                top6relevant.push(x);
+                            }
+                        } else {
+                            for (var i = 0; i < total_item; i ++) {
+                                var x = data_json.results[i].source.subject.split("http://dbpedia.org/resource/")[1];
+                                top6relevant.push(x);
+                            }
+                        }
+
+                        var temp0 = $("rls").html();
+                        temp0 = temp0.replace(/{{RELEVANTSEARCH}}/g,
+                        "<p><a style = \"font-size: 14px;\"href=\" list.html?querykeyword=" + top6relevant[0] + "=1\">" + top6relevant[0] + "</a>"
+                        + "<a style = \"font-size: 14px;\" href=\"list.html?querykeyword=" + top6relevant[1] + "=1\">" + top6relevant[1] + "</a>" 
+                        + "<a style = \"font-size: 14px;\" href=\"list.html?querykeyword=" + top6relevant[2] + "=1\">" + top6relevant[2] + "</a></p>" 
+                        + "<p><a style = \"font-size: 14px;\" href=\"list.html?querykeyword=" + top6relevant[3] + "=1\">" + top6relevant[3] + "</a>" 
+                        + "<a style = \"font-size: 14px;\" href=\"list.html?querykeyword=" + top6relevant[4] + "=1\">" + top6relevant[4] + "</a>" 
+                        + "<a style = \"font-size: 14px;\" href=\"list.html?querykeyword=" + top6relevant[5] + "=1\">" + top6relevant[5] + "</a></p>");
+
+                        $("rls").html("");
+                        $('rls').append(temp0);
+
+
+                        document.getElementById('query_time').innerHTML = query_time/1000;
+                        document.getElementById('total_item').innerHTML = total_item;
+
+                        var ull = $(".ull");
+                        var uls = $(".uls");
+                        var temp = uls.html();
+                        ull.html("");
+                        if (page == 1) {
+                            for (var i=(page-1)*10; i<10; i++) {
+                                var item = data_json.results[i];
+                                var str_json = JSON.stringify(item.source);
+                                var sub_url = item.source.subject;
+                                var sub = sub_url.split("http://dbpedia.org/resource/")[1];
+                                var content = temp.replace(/{{TITLE}}/g, "<a href=\"info.html?=" + sub + "=" + encodeURI(sub_url) + "\">" + sub + "</a>");
+                                
+                                content = content.replace(/{{VALUE}}/g, item.total_score);
+                                content = content.replace(/{{KEYWORD}}/g, "");
+                                content = content.replace(/{{INFO_LINK}}/g, "<a href=\"http://dbpedia.org/resource/" +  sub + "\" style = \"font-size: 14px;\"> DBPEDIA,</a>" 
+                                    + "<a href=\"http://en.wikipedia.org/wiki/" +  sub + "\" style = \"font-size: 14px;\"> WIKIPEDIA,</a>" 
+                                    + "<a href=\"https://gate.d5.mpi-inf.mpg.de/webyago3spotlx/Browser?entityIn=" +  sub + "&codeIn=eng\" style = \"font-size: 14px;\"> YAGO</a>");
+                                content = content.replace(/{{ABSTARCT}}/g, "The Pittsburgh Tribune-Review, also known as \"the Trib,\" is the second largest daily newspaper serving metropolitan Pittsburgh, Pennsylvania, in the United States. Founded on August 22, 1811 as the Greensburg Gazette and in 1889 consolidated with several papers into the Greensburg Tribune-Review, the paper circulated only in the eastern suburban counties of Westmoreland and parts of Indiana and Fayette until May, 1992 when it began serving all of the Pittsburgh metropolitan area after a strike at the two Pittsburgh dailies, the Pittsburgh Post-Gazette and Pittsburgh Press, deprived the city of a newspaper for several months.");
+
+                                ull.append(content);
+                                if(i == total_item-1) {
+                                    break;
+                                }
+                            }
+                            $(".resultItem").show();
+                        }
+
+                        //分页
+                        var resultItem = $(".resultItem");
+                        $(".pagination").pagination(total_item, data_json, ull, uls, resultItem, {
+                            current_page :0, //当前页码
+                            items_per_page :10,
+                            display_msg :true,
+                            // callback :pageselectCallback
+                        });
+                    },
+
+                    error : function(data){
+                        alert("json =" + json);
+                        return false;
+                    }
+                });
+            });
+
+    </script>
+
+</head>
+
+<body>
+
+<div id="container">
+	<div id="hd" class="ue-clear">
+    	<a href="homepage.html"><div class="logo"></div></a>
+        <div class="inputArea">
+        	<!-- <input type="text" class="searchInput" />
+            <input type="button" class="searchButton" /> -->
+            <input type="text" name="keyword" id="query_keyword" style="width:300px;
+            height:40px;
+            font-size:14px;
+            margin-top: 1em;">
+
+             <input type="button" value="Search"  onclick="doClick()" style="width:100px;
+            height:46px;
+            background: #3385FF;
+            color:#fff;
+            border-bottom: 1px solid #2d78f4;
+            -webkit-appearance: none;
+            -webkit-border-radius:0;
+            outline: medium;
+            margin-left:-6px;
+            font-size: 15px;">
+        </div>
+    </div>
+
+    <div class="nav">
+    	<p class="resultTotal">
+            <span class="info">About&nbsp;<span class="totalResult" id="total_item">total_item</span>&nbsp;results(<span class="time" id="query_time"></span> seconds)</span>
+            <span class="orderOpt"></span>
+        </p>
+    </div>
+
+	<div id="bd" class="ue-clear">
+        <div id="main">
+        	<div class="sideBar">
+                <div class="sideBarShowHide">
+                	<a href="javascript:;" class="icon"></a>
+                </div>
+            </div>
+            <div class="resultArea">
+
+                <div class="resultList">
+                    <ull class="ull">
+                        <uls class="uls">
+                            <div class="resultItem" id = "resultItem">
+                                <div class="itemHead">
+                                    <a class="title" >{{TITLE}}<span class="keyWord">{{KEYWORD}}</span></a>
+                                    <span class="divsion">-</span>
+                                   
+                                    <span class="dependValue">
+                                        <span class="label" style = "font-size: 14px;">relevance：</span>
+                                        <span class="value" id = "value" style="font-size:16px;">{{VALUE}}</span>
+                                    </span>     
+                                </div>
+                                <div class="itemBody">{{ABSTARCT}}</div>
+                                <div class="itemFoot">
+                                    <span class="info">
+                                        {{INFO_LINK}}
+                                    </span>
+                                </div>
+                            </div>  
+                        </uls>
+                    </ull>
+                </div>
+                
+                <!-- 分页 -->
+                <div class="pagination ue-clear"></div>
+                <!-- 相关搜索 -->
+                <div class="dependSearch ue-clear">
+                    <h6>Relevant Search</h6>
+                    <div class="searchList">
+                        <rls>{{RELEVANTSEARCH}}</rls>
+                       <!--  <p>
+                            <a href="javascript:;">Diego_Maradona</a>
+                            <a href="javascript:;">Neymar</a>
+                            <a href="javascript:;">Ronaldo</a>
+                        </p>
+                        <p>
+                        	<a href="javascript:;">Ronaldinho</a>
+                            <a href="javascript:;">Cristiano_Ronaldo</a>
+                            <a href="javascript:;">Zinedine_Zidane</a>
+                        </p> -->
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </div><!-- End of main -->
+    </div><!--End of bd-->
+</div><!--End of container-->
+
+</body>
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/pagination.js"></script>
+<script type="text/javascript">
+
+    function doClick() {
+        var query_keyword=$("#query_keyword").val();
+        window.open("list.html?querykeyword=" + query_keyword + "=" + 1);
+    }
+
+	$('.searchList').on('click', '.searchItem', function(){
+		$('.searchList .searchItem').removeClass('current');
+		$(this).addClass('current');	
+	});
+	
+	$.each($('.subfieldContext'), function(i, item){
+		$(this).find('li:gt(2)').hide().end().find('li:last').show();		
+	});
+	
+	$('.subfieldContext .more').click(function(e){
+		var $more = $(this).parent('.subfieldContext').find('.more');
+		if($more.hasClass('show')){
+			
+			if($(this).hasClass('define')){
+				$(this).parent('.subfieldContext').find('.more').removeClass('show').find('.text').text('自定义');
+			}else{
+				$(this).parent('.subfieldContext').find('.more').removeClass('show').find('.text').text('更多');	
+			}
+			$(this).parent('.subfieldContext').find('li:gt(2)').hide().end().find('li:last').show();
+	    }else{
+			$(this).parent('.subfieldContext').find('.more').addClass('show').find('.text').text('收起');
+			$(this).parent('.subfieldContext').find('li:gt(2)').show();	
+		}
+		
+	});
+	
+	$('.sideBarShowHide a').click(function(e) {
+		if($('#main').hasClass('sideBarHide')){
+			$('#main').removeClass('sideBarHide');
+			$('#container').removeClass('sideBarHide');
+		}
+        else{
+			$('#main').addClass('sideBarHide');	
+			$('#container').addClass('sideBarHide');
+		}
+        
+    });
+	
+	setHeight();
+	$(window).resize(function(){
+		setHeight();	
+	});
+	
+	function setHeight(){
+		if($('#container').outerHeight() < $(window).height()){
+			$('#container').height($(window).height()-33);
+		}	
+	}
+</script>
+
+</html>

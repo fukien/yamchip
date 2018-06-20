@@ -1,0 +1,108 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>login</title>
+		
+		<script src="js/jquery-2.2.1.js"></script>
+		<script src="js/js.cookie.js"></script>
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Optional Bootstrap Theme -->
+		<link href="css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
+		
+		
+		<link rel="stylesheet" href="css/login.css">
+		<link rel="stylesheet" href="css/common.css">
+		<script  type="text/javascript" src="js/login.js"></script>
+		<script  type="text/javascript" >
+			$("document").ready(function(){
+				$("#loginBtn").click(loginCheck);
+				$("#auto_login").click(auto_login_check);
+				$("#whole_body").css("background-image", "url(img/bg_03.jpg)");
+				$("#whole_body").css("background-size", "cover");
+			});
+		</script>
+	</head>
+	<body>
+		<nav class="navbar navbar-default" role="navigation" id="navbar">
+			<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-3">
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed navbar-center" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<img id="navbar_header_img" src="img/logo.png" ></img>
+			</div><!--navbar-header-->
+			</div>
+			<div class="col-md-4">
+			
+			<div class="collapse navbar-collapse bs-navbar-collapse" id="navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active">
+						<a href="#"  id="nav_active">首页</a>
+					</li>
+					<li><a href="#"> 案例</a></li>
+					<li><a href="#">关于我们</a></li>
+					<li><div class="head-log"><a href="#">登录</a>|<a href="#" >注册</a></div></li>
+				</ul>
+			</div> <!--navbar-collapse-->
+			</div>
+			<div class="col-md-2"></div>
+			</div> <!--row-->
+		</nav>
+
+		<div class="whole-body" id="whole_body">
+			<div class="panel panel-default" id="login-panel">
+				<table class="table" id="login-table">
+					<tr>
+						<td colspan="2" id="nobordertd">
+							<h3 class="text-center with-line" id="login-title">登录账号</h3>
+						</td>
+					</tr>
+					<tr>
+						<td id="nobordertd">
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+								<input type="text" class="form-control" id="job-number" placeholder="工号或者用户名">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td id="nobordertd">
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+								<input type="password" class="form-control" id="password" placeholder="密码">
+								</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" id="nobordertd">
+							<div class="row">
+								<div class="btncol-left col-md-6">
+									<button type="button" class="btn btn-block" id="loginBtn">登录</button>
+								</div>
+								<div class="btncol-right col-md-6">
+									<button type="button" class="btn btn-block" id="registerBtn">注册</button>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div><!--panel panel-default-->
+		</div><!--whole-body-->
+		
+		<div class="absolute-footer">
+			<iframe src="footer.html" id="footer-frame"></iframe>
+		</div>
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	</body>
+	
+</html>

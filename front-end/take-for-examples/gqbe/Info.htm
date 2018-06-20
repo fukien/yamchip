@@ -1,0 +1,593 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0036)http://10.77.40.41:9090/ns/type/type -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Info</title>
+<link href="./Info_files/bootstrap.min.css" rel="stylesheet">
+<link href="data:text/css;charset=utf-8," data-href="/css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
+<script src="./Info_files/jquery.min.js"></script>
+<script type="text/javascript" src="./Info_files/bootstrap.min.js"></script>
+<script type="text/javascript">
+	go  = false;
+	var goMid  = "";
+
+	function addNewEntity(){
+		$.ajax({
+			url:'/addEntity',
+			type:'get',
+			data:{
+				key:$("#ekey").val()
+			}
+		,
+		dataType:"json",
+		success:function(data){
+			if(data.errcode>=0){
+				goMid = "#ekey";
+				$("#mybody").html("添加成功,新添加的实体mid为:"+data.mid+"key为"+data.key);
+				$("#myModal").modal("show");
+				$("#goto").removeAttr("disabled"); 
+			}else
+			{
+				$("#mybody").html("添加失败:" + data.errmsg);
+				$("#myModal").modal("show");
+				$("#goto").attr('disabled',"true");
+			}
+
+		}
+		});
+	}
+	function getCandidateList(){
+		var pred = $("#predicate").val();
+		var options = $("#predicate  option:selected");
+		var selId = "#okey";
+		if(options.attr("rangeLiteral")=="true"){
+			selId = "#oformat";
+		}
+		if(pred=="select"){
+			return ;
+		}
+		$.ajax({
+			url:'/getCandidateList',
+			type:'get',
+			data:{
+				predicateId:pred,
+				tag:"en"
+			}
+		,
+		dataType:"json",
+		success:function(data){
+			if(data.errcode>=0){
+				$("#okey").empty();
+				$("#oformat").empty();
+				$("#oformat").append("<option value=''>[Empty]</option>");
+					for(var i in data.candidate){
+						var obj = data.candidate[i];
+						var name = "";
+						if(typeof obj.name!="null"){
+							for(var k in obj.name){
+								name = obj.name[k];
+							}
+						}
+						$(selId).append("<option value='"+obj.id+"'>"+name+"["+obj.id+"]</option>");
+					}
+			}else
+			{
+				$("#mybody").html("添加失败:" + data.errmsg);
+				$("#myModal").modal("show");
+				$("#goto").attr('disabled',"true");
+			}
+		}
+		});
+	}
+	function delMyself()
+	{
+		$("#mentionModal").modal("hide");
+		$.ajax({
+			url:'/delEntity',
+			type:'get',
+			data:{
+				key:"/type/type"
+			}
+		,
+		dataType:"json",
+		success:function(data){
+			if(data.errcode>=0){
+				$("#mybody").html("删除成功");
+				$("#myModal").modal("show");
+				//$("#goto").removeAttr("disabled"); 
+			}else
+			{
+				$("#mybody").html("删除失败:" + data.errmsg);
+				$("#myModal").modal("show");
+				$("#goto").attr('disabled',"true");
+			}
+		}});
+	}
+	function delRelation()
+	{
+		var subj = $("#skey").val();
+		var predicate = $("#predicate").val();
+		var obj = $("#eobj").val();
+		var fmt = $("#oformat").val();
+		var tag = $("#etag").val();
+		$.ajax({
+			url:'/delRelation',
+			type:'get',
+			data:{
+				subject:subj,
+				predicate:predicate,
+				object:obj,
+				langTag:tag,
+				format:fmt
+			}
+		,
+		dataType:"json",
+		success:function(data){
+			if(data.errcode>=0){
+				$("#mybody").html("删除成功");
+				goMid = "#skey";
+				$("#myModal").modal("show");
+				//$("#goto").removeAttr("disabled"); 
+			}else
+			{
+				$("#mybody").html("删除失败:" + data.errmsg);
+				$("#myModal").modal("show");
+				$("#goto").attr('disabled',"true");
+			}
+		}});
+	}
+	function addNewRelation()
+	{
+		var subj = $("#skey").val();
+		var predicate = $("#predicate").val();
+		var obj = $("#eobj").val();
+		var fmt = $("#oformat").val();
+		var tag = $("#etag").val();
+		$.ajax({
+			url:'/addNewRelation',
+			type:'get',
+			data:{
+				subject:subj,
+				predicate:predicate,
+				object:obj,
+				langTag:tag,
+				format:fmt
+			}
+		,
+		dataType:"json",
+		success:function(data){
+			if(data.errcode>=0){
+				$("#mybody").html("添加成功");
+				goMid = "#skey";
+				$("#myModal").modal("show");
+				//$("#goto").removeAttr("disabled"); 
+			}else
+			{
+				$("#mybody").html("添加失败:" + data.errmsg);
+				$("#myModal").modal("show");
+				$("#goto").attr('disabled',"true");
+			}
+		}});
+	}
+	$(document).ready(function() {
+		$("#myModal").modal("hide");
+		$("#btn_add_entity").click(function(){
+			addNewEntity();
+		});
+		$("#goto").click(function(){
+			location.href= "/ns"+ $(goMid).val() +"?tag=en";
+		});
+		$("#predicate").change(function(){
+			getCandidateList();
+		});
+		$("#okey").change(function(){
+			$("#eobj").val($("#okey").val());
+		});
+		$("#btn_add_relation").click(function(){
+			addNewRelation();
+		});
+		$("#btn_del_relation").click(function(){
+			delRelation();
+		});
+		$("#btn_del_entity").click(function(){
+			$("#mentionModal").modal("show");
+		});
+		$("#btn_del_verify").click(function(){
+			delMyself();
+		});
+	});
+</script>
+</head>
+
+<body>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<a href="http://10.77.40.41:9090/ns/type/type?tag=en">Type</a>
+        			<button id="btn_del_entity" type="button" class="btn btn-default btn-xs">Delete</button>
+				</div>
+				<div class="panel-body"></div>
+			</div>
+			
+				
+				
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						
+						[<a href="http://10.77.40.41:9090/ns/type/object?tag=en">/type/object</a>]
+					</div>
+					<table class="table">
+						
+						
+						
+						
+							<tbody><tr>
+								<td><a href="http://10.77.40.41:9090/ns/type/object/name?tag=en" title="/type/object/name">
+									Name
+											</a></td>
+								<td>
+								
+								<a href="http://10.77.40.41:9090/ns/type/text?tag=en">
+								Type
+											
+											</a>
+										
+											</td>
+							</tr>
+						
+						
+						
+						
+							<tr>
+								<td><a href="http://10.77.40.41:9090/ns/type/object/alias?tag=en" title="/type/object/alias">
+									Alias
+											</a></td>
+								<td>
+								
+								<a href="http://10.77.40.41:9090/ns/type/text?tag=en">
+								Concept
+											
+											</a>
+										
+											</td>
+							</tr>
+						
+						
+						
+						
+							<tr>
+								<td><a href="http://10.77.40.41:9090/ns/type/object/alias?tag=en" title="/type/object/alias">
+									Alias
+											</a></td>
+								<td>
+								
+								<a href="http://10.77.40.41:9090/ns/type/text?tag=en">
+								Class
+											
+											</a>
+										
+											</td>
+							</tr>
+						
+						
+						
+						
+							<tr>
+								<td><a href="http://10.77.40.41:9090/ns/type/object/key?tag=en" title="/type/object/key">
+									Key
+											</a></td>
+								<td>
+								
+								<a href="http://10.77.40.41:9090/ns/type/key?tag=en">
+								/type/type
+											
+											</a>
+										
+											</td>
+							</tr>
+						
+						
+						
+						
+							<tr>
+								<td><a href="http://10.77.40.41:9090/ns/type/object/id?tag=en" title="/type/object/id">
+									Identifier
+											</a></td>
+								<td>
+								
+								<a href="http://10.77.40.41:9090/ns/type/key?tag=en">
+								/type/type
+											
+											</a>
+										
+											</td>
+							</tr>
+						
+					</tbody></table>
+					<br>
+					
+					<!--  
+		<div class="panel-body"></div>
+			-->
+				</div>
+				<br>
+			
+				
+				
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						Type
+						[<a href="http://10.77.40.41:9090/ns/type/type?tag=en">/type/type</a>]
+					</div>
+					<table class="table">
+						
+						
+						
+						
+							<tbody><tr>
+								<td><a href="http://10.77.40.41:9090/ns/type/type/predicate?tag=en" title="/type/type/predicate">
+									Predicate
+											</a></td>
+								<td>
+								
+								<a href="http://10.77.40.41:9090/ns/type/type/predicate?tag=en">
+								Predicate
+											
+											</a>
+										
+											</td>
+							</tr>
+						
+						
+						
+						
+							<tr>
+								<td><a href="http://10.77.40.41:9090/ns/type/type/predicate?tag=en" title="/type/type/predicate">
+									Predicate
+											</a></td>
+								<td>
+								
+								<a href="http://10.77.40.41:9090/ns/type/type/cluster?tag=en">
+								Type's Cluster
+											
+											</a>
+										
+											</td>
+							</tr>
+						
+						
+						
+						
+							<tr>
+								<td><a href="http://10.77.40.41:9090/ns/type/type/predicate?tag=en" title="/type/type/predicate">
+									Predicate
+											</a></td>
+								<td>
+								
+								<a href="http://10.77.40.41:9090/ns/type/type/subTypeOf?tag=en">
+								SubClassOf
+											
+											</a>
+										
+											</td>
+							</tr>
+						
+						
+						
+						
+							<tr>
+								<td><a href="http://10.77.40.41:9090/ns/type/type/predicate?tag=en" title="/type/type/predicate">
+									Predicate
+											</a></td>
+								<td>
+								
+								<a href="http://10.77.40.41:9090/ns/type/type/equivalentType?tag=en">
+								
+											
+											[/type/type/equivalentType]
+											
+											</a>
+										
+											</td>
+							</tr>
+						
+						
+						
+						
+							<tr>
+								<td><a href="http://10.77.40.41:9090/ns/type/type/predicate?tag=en" title="/type/type/predicate">
+									Predicate
+											</a></td>
+								<td>
+								
+								<a href="http://10.77.40.41:9090/ns/type/type/isMediator?tag=en">
+								IsMediator
+											
+											</a>
+										
+											</td>
+							</tr>
+						
+						
+						
+						
+							<tr>
+								<td><a href="http://10.77.40.41:9090/ns/type/type/predicate?tag=en" title="/type/type/predicate">
+									Predicate
+											</a></td>
+								<td>
+								
+								<a href="http://10.77.40.41:9090/ns/type/type/extended?tag=en">
+								ExtendedBy
+											
+											</a>
+										
+											</td>
+							</tr>
+						
+						
+						
+						
+							<tr>
+								<td><a href="http://10.77.40.41:9090/ns/type/type/cluster?tag=en" title="/type/type/cluster">
+									Type's Cluster
+											</a></td>
+								<td>
+								
+								<a href="http://10.77.40.41:9090/ns/type?tag=en">
+								System Cluster
+											
+											</a>
+										
+											</td>
+							</tr>
+						
+					</tbody></table>
+					<br>
+					
+					<!--  
+		<div class="panel-body"></div>
+			-->
+				</div>
+				<br>
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<div class="panel panel-default">
+				<div class="panel-heading">Add New Entity with its key</div>
+				<div class="panel-body">
+					<form class="form-inline">
+						<div class="form-group">
+							<label for="ekey">Entity Key</label> <input type="text" class="form-control" id="ekey" placeholder="Enter A new Entity with its key">
+						</div>
+						<button type="button" class="btn btn-default" id="btn_add_entity">ADD</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<div class="panel panel-default">
+				<div class="panel-heading">Add new relations or types</div>
+				<div class="panel-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="skey" class="col-sm-2 control-label">Subject</label>
+							   <div class="col-sm-10">
+							 <input type="text" class="form-control" id="skey" placeholder="" value="/type/type" disabled="">
+								</div>
+						</div>
+						<div class="form-group">
+							<label for="predicate" class="col-sm-2 control-label">Predicate</label> 
+							   <div class="col-sm-10">
+							<select class="form-control" id="predicate">
+								<option value="select">select</option>
+								
+									<option id="property/type/object/type" rangeliteral="false" value="/type/object/type">/type/object/type</option>
+								
+									<option id="property/type/type/predicate" rangeliteral="false" value="/type/type/predicate">/type/type/predicate</option>
+								
+									<option id="property/type/type/cluster" rangeliteral="false" value="/type/type/cluster">/type/type/cluster</option>
+								
+									<option id="property/type/object/name" rangeliteral="true" value="/type/object/name">/type/object/name</option>
+								
+									<option id="property/type/object/alias" rangeliteral="true" value="/type/object/alias">/type/object/alias</option>
+								
+									<option id="property/type/type/subTypeOf" rangeliteral="false" value="/type/type/subTypeOf">/type/type/subTypeOf</option>
+								
+									<option id="property/type/type/equivalentType" rangeliteral="false" value="/type/type/equivalentType">/type/type/equivalentType</option>
+								
+									<option id="property/type/object/key" rangeliteral="true" value="/type/object/key">/type/object/key</option>
+								
+									<option id="property/type/object/id" rangeliteral="true" value="/type/object/id">/type/object/id</option>
+								
+									<option id="property/type/object/equivalentTo" rangeliteral="false" value="/type/object/equivalentTo">/type/object/equivalentTo</option>
+								
+									<option id="property/type/object/description" rangeliteral="true" value="/type/object/description">/type/object/description</option>
+								
+									<option id="property/type/type/isMediator" rangeliteral="true" value="/type/type/isMediator">/type/type/isMediator</option>
+								
+									<option id="property/type/type/extended" rangeliteral="false" value="/type/type/extended">/type/type/extended</option>
+								
+							</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="okey" class="col-sm-2 control-label">Object Candidate</label> 
+							   <div class="col-sm-10">
+							<select class="form-control" id="okey">
+							</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="eobj" class="col-sm-2 control-label">Object Text or Key</label> 
+							   <div class="col-sm-10">
+							<input type="text" class="form-control" id="eobj" placeholder="" value="">
+								</div>
+						</div>
+												<div class="form-group">
+							<label for="eobj" class="col-sm-2 control-label">Object Format</label> 
+							   <div class="col-sm-10">
+							<select class="form-control" id="oformat">
+							</select>
+								</div>
+						</div>
+																		<div class="form-group">
+							<label for="eobj" class="col-sm-2 control-label">Object Language</label> 
+							   <div class="col-sm-10">
+							<input type="text" class="form-control" id="etag" placeholder="" value="en">
+								</div>
+						</div>
+						<button type="button" class="btn btn-default" id="btn_add_relation">ADD</button>
+						<button type="button" class="btn btn-default" id="btn_del_relation">DEL</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="myModalLabel">提示框</h4>
+      </div>
+      <div id="mybody" class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="goto">Go To</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="mentionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="mentionModalLabel">提示框</h4>
+      </div>
+      <div id="menton-body" class="modal-body">
+			Are you sure to delete the button?
+      </div>
+      <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="btn_del_verify">Sure</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body></html>
