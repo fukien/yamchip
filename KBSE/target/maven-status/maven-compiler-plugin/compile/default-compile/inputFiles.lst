@@ -1,2 +1,11 @@
-D:\IDEA\KBSE\src\main\java\ES\ESClient.java
-D:\IDEA\KBSE\src\main\java\kbsearch\KBS.java
+D:\code\yamchip\KBSE\src\main\java\me\hagen\pg\NodeDao.java
+D:\code\yamchip\KBSE\src\main\java\me\hagen\pg\Conn.java
+D:\code\yamchip\KBSE\src\main\java\me\hagen\kg\QResultSet.java
+D:\code\yamchip\KBSE\src\main\java\kbsearch\KBS.java
+D:\code\yamchip\KBSE\src\main\java\me\hagen\ppr\PageRankEstimator.java
+D:\code\yamchip\KBSE\src\main\java\me\hagen\pg\Node.java
+D:\code\yamchip\KBSE\src\main\java\me\hagen\pg\PredicateDao.java
+D:\code\yamchip\KBSE\src\main\java\me\hagen\pg\Predicate.java
+D:\code\yamchip\KBSE\src\main\java\ES\ESClient.java
+D:\code\yamchip\KBSE\src\main\java\me\hagen\kg\TDBConnection.java
+D:\code\yamchip\KBSE\src\main\java\kbsearch\KGS.java

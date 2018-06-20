@@ -15,7 +15,7 @@ import me.hagen.kg.TDBConnection;
 
 public class KGSTest {
 
-	@Test
+	//@Test
 	public void testDoGetHttpServletRequestHttpServletResponse() {
 		String suffix = "Yao_Ming";
     	JSONObject res = new JSONObject();
