@@ -25,12 +25,14 @@
                 document.getElementById("header_title").innerHTML = keyword + " - Yamchip Search";
 
                 $(".resultItem").hide();
+                $(".searchList").hide();
+                $(".relevantsearch").hide();
 
-                var start_date = new Date();
+                var start_time = new Date();
 
                 $.ajax({
                     type: "POST",
-                    url: '10.48.162.169:8080/KBSE/KBSearch',
+                    url: 'http://10.48.162.169:8080/KBSE/KBSearch',
                     dataType: 'text',
 
                     data : {
@@ -38,20 +40,23 @@
                     },
 
                     success : function(data){
-                        alert(data)
-                        var end_date = new Date();
-                        var query_time = end_date.getMilliseconds() - start_date.getMilliseconds();
+                        console.log(data);
+                        var end_time = new Date();
+                        var query_time = end_time - start_time;
                         data_json = JSON.parse(data);
                         total_item = data_json.count;
-
+                        total_item = data_json.results.length;
+                        var res = data_json.results;
                         if (total_item > 6) {
-                            for (var i=0; i < 6; i ++) {
-                                var x = data_json.results[i].source.subject.split("http://dbpedia.org/resource/")[1];
+                            var ins = 0;
+                            for (ins=0; ins<6; ins++) {
+                                var x = res[ins].source.subject.split("http://dbpedia.org/resource/")[1];
                                 top6relevant.push(x);
                             }
                         } else {
-                            for (var i = 0; i < total_item; i ++) {
-                                var x = data_json.results[i].source.subject.split("http://dbpedia.org/resource/")[1];
+                            var ins = 0;
+                            for (ins=0; ins<total_item; ins++) {
+                                var x = res[ins].source.subject.split("http://dbpedia.org/resource/")[1];
                                 top6relevant.push(x);
                             }
                         }
@@ -82,6 +87,8 @@
                                 var str_json = JSON.stringify(item.source);
                                 var sub_url = item.source.subject;
                                 var sub = sub_url.split("http://dbpedia.org/resource/")[1];
+                                var abstract = item.source.abstract;
+
                                 var content = temp.replace(/{{TITLE}}/g, "<a href=\"info.html?=" + sub + "=" + encodeURI(sub_url) + "\">" + sub + "</a>");
                                 
                                 content = content.replace(/{{VALUE}}/g, item.total_score);
@@ -89,7 +96,12 @@
                                 content = content.replace(/{{INFO_LINK}}/g, "<a href=\"http://dbpedia.org/resource/" +  sub + "\" style = \"font-size: 14px;\"> DBPEDIA,</a>" 
                                     + "<a href=\"http://en.wikipedia.org/wiki/" +  sub + "\" style = \"font-size: 14px;\"> WIKIPEDIA,</a>" 
                                     + "<a href=\"https://gate.d5.mpi-inf.mpg.de/webyago3spotlx/Browser?entityIn=" +  sub + "&codeIn=eng\" style = \"font-size: 14px;\"> YAGO</a>");
-                                content = content.replace(/{{ABSTARCT}}/g, "The Pittsburgh Tribune-Review, also known as \"the Trib,\" is the second largest daily newspaper serving metropolitan Pittsburgh, Pennsylvania, in the United States. Founded on August 22, 1811 as the Greensburg Gazette and in 1889 consolidated with several papers into the Greensburg Tribune-Review, the paper circulated only in the eastern suburban counties of Westmoreland and parts of Indiana and Fayette until May, 1992 when it began serving all of the Pittsburgh metropolitan area after a strike at the two Pittsburgh dailies, the Pittsburgh Post-Gazette and Pittsburgh Press, deprived the city of a newspaper for several months.");
+
+                                if (abstract != undefined) {
+                                    content = content.replace(/{{ABSTARCT}}/g, abstract);
+                                } else {
+                                    content = content.replace(/{{ABSTARCT}}/g, "");
+                                }
 
                                 ull.append(content);
                                 if(i == total_item-1) {
@@ -97,6 +109,8 @@
                                 }
                             }
                             $(".resultItem").show();
+                            $(".searchList").show();
+                            $(".relevantsearch").show();
                         }
 
                         //分页
@@ -109,9 +123,13 @@
                         });
                     },
 
-                    error : function(data){
-                        console.log(data);
-                        alert("json =" + json);
+                    error : function(jqXHR, textStatus, errorThrown){
+                        console.log(jqXHR.responseText + " responseText");
+                        console.log(jqXHR.status + " status");
+                        console.log(jqXHR.readyState + " readyState");
+                        console.log(jqXHR.statusText + "statusText");
+                        console.log(textStatus + " textStatus");
+                        console.log(errorThrown + " errorThrown");
                         return false;
                     }
                 });
@@ -191,7 +209,8 @@
                 <div class="pagination ue-clear"></div>
                 <!-- 相关搜索 -->
                 <div class="dependSearch ue-clear">
-                    <h6>Relevant Search</h6>
+
+                    <div class="relevantsearch"><h6>Relevant Search</h6></div>
                     <div class="searchList">
                         <rls>{{RELEVANTSEARCH}}</rls>
                        <!--  <p>
