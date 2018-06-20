@@ -38,8 +38,9 @@
 				<version>2.4</version>
 				<configuration>
 					<failOnMissingWebXml>true</failOnMissingWebXml>
-					<warSourceDirectory>/web</warSourceDirectory>
-				</configuration>
+					<warSourceDirectory>web</warSourceDirectory>
+                    <webXml>web\WEB-INF\web.xml</webXml>
+                </configuration>
 			</plugin>
         </plugins>
         <finalName>test</finalName>

@@ -1,0 +1,13 @@
+me/hagen/pg/NodeDao.class
+me/hagen/pg/PredicateDao.class
+kbsearch/KBS$1.class
+kbsearch/KBS.class
+kbsearch/KGS.class
+me/hagen/ppr/PageRankEstimator.class
+me/hagen/pg/Predicate.class
+me/hagen/kg/TDBConnection.class
+me/hagen/pg/Node.class
+ES/ESClient.class
+me/hagen/kg/QResultSet.class
+me/hagen/pg/Conn.class
+me/hagen/ppr/PageRankEstimator$Triple.class
