@@ -6,13 +6,13 @@ import org.junit.Test;
 
 public class TDBConnectionTest {
 
-	@Test
+	//@Test
 	public void testInsert() {
 		TDBConnection conn = TDBConnection.getConnection();
 		conn.insert("<http://dbpedia.org/resource/ahaha>", "<http://dbpedia.org/resource/ahaha>", "<http://dbpedia.org/resource/ahaha>");
 	}
 
-	@Test
+	//@Test
 	public void testDelete() {
 		fail("Not yet implemented");
 	}

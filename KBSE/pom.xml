@@ -26,9 +26,20 @@
 				<version>2.4</version>
 				<configuration>
 					<failOnMissingWebXml>true</failOnMissingWebXml>
-					<warSourceDirectory>/web/</warSourceDirectory>
+                    <!--
+					<warSourceDirectory>/web/</warSourceDirectory>-->
 				</configuration>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/KBSE</path>
+                    <port>8080</port>
+                    <uriEncoding>UTF-8</uriEncoding>
+                </configuration>
+            </plugin>
         </plugins>
         <finalName>test</finalName>
     </build>

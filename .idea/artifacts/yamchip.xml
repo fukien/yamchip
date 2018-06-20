@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="yamchip">
+    <output-path>$PROJECT_DIR$/out/artifacts/yamchip</output-path>
+    <root id="root">
+      <element id="directory" name="webapp" />
+    </root>
+  </artifact>
+</component>

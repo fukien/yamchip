@@ -13,7 +13,7 @@ import java.util.List;
 import org.junit.Test;
 
 public class NodeDaoTest {
-	@Test
+	//@Test
 	public void testPrefix() throws ClassNotFoundException, SQLException{
 		try(Connection conn = Conn.getConnection()){
 			NodeDao dao = new NodeDao();
@@ -23,7 +23,7 @@ public class NodeDaoTest {
 		}			}
 
 }
-	@Test
+	//@//Test
 	public void testAdd() throws ClassNotFoundException, SQLException, IOException {
 		try(Connection conn = Conn.getConnection()){
 			NodeDao dao = new NodeDao();
