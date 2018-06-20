@@ -44,8 +44,15 @@ public class TDBConnection implements AutoCloseable{
 	public static TDBConnection getConnection(){
 		return new TDBConnection(queryPoint);
 	}
+	public static TDBConnection getConnection39(){
+		return new TDBConnection("http://10.77.50.103:3030/dbp39");
+	}
 	public TDBConnection(String queryService){
 		conn = RDFConnectionFactory.connect(queryService);
+	}
+	public QResultSet getAbstract(String id){
+		String sparql = "select ?p ?o where {?s ?p ?o . filter(?s="+id+") .  filter(?p=<http://dbpedia.org/ontology/abstract>)}";
+		return sparqlQuery(sparql);
 	}
 	public QResultSet sparqlQuery(String query){
 		QueryExecution qexec = conn.query(query);
@@ -59,6 +66,15 @@ public class TDBConnection implements AutoCloseable{
 	}
 	public void insert(String s,String p, String o){
 		String sparql = "insert { ?s ?p ?o } where { bind("+s+" as ?s) . bind("+p+" as ?p) . bind("+o+" as ?o)}";
+		conn.begin(ReadWrite.WRITE);
+		//System.out.println(sparql);
+		UpdateRequest req = UpdateFactory.create(sparql);
+		conn.update(req);
+		conn.commit();
+	}
+	public void insert2(String s,String p, String o){
+		String sparql = "insert { "+s+" "+p+" "+o+" } ";
+		System.out.println(sparql);
 		conn.begin(ReadWrite.WRITE);
 		UpdateRequest req = UpdateFactory.create(sparql);
 		conn.update(req);
