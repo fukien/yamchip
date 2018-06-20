@@ -4,11 +4,20 @@ import static org.junit.Assert.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.junit.Test;
 
 public class PredicateDaoTest {
 
+	@Test
+	public void testPrefixMatch() throws SQLException {
+		Connection conn = Conn.getConnection();
+		PredicateDao dao = new PredicateDao();
+		List<Predicate> p = dao.prefixMatch(conn, "Birth", 10);
+		for(Predicate pr:p)System.out.println(pr.getId());
+		conn.close();
+	}
 	@Test
 	public void test() throws SQLException {
 		Connection conn = Conn.getConnection();

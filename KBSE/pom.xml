@@ -10,40 +10,7 @@
     <packaging>war</packaging>
     <name>es-demo</name>
     <url>http://maven.apache.org</url>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <path>/KBSE</path>
-                    <port>8080</port>
-                    <warSourceDirectory>/web</warSourceDirectory>
-                    <uriEncoding>UTF-8</uriEncoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.0</version>
-                <configuration>
-                    <compilerVersion>1.8</compilerVersion>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<failOnMissingWebXml>true</failOnMissingWebXml>
-					<warSourceDirectory>/web</warSourceDirectory>
-				</configuration>
-			</plugin>
-        </plugins>
-        <finalName>test</finalName>
-    </build>
+    
     <dependencies>
         <dependency>
       <groupId>junit</groupId>
@@ -123,6 +90,54 @@
 
     </dependencies>
 
-
+<build>
+<!--
+<sourceDirectory>src.main.java</sourceDirectory>
+    <outputDirectory>target</outputDirectory>-->
+        <plugins>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+		<version>2.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+		    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<failOnMissingWebXml>true</failOnMissingWebXml>
+					<!--<archiveClasses>true</archiveClasses>-->
+					<!--<warSourceDirectory>/web</warSourceDirectory>-->
+<webResources>  
+                    <resource><!--打包lib文件夹的jar包-->  
+                        <directory>${project.basedir}/target/classes</directory>  
+                        <targetPath>WEB-INF/classes</targetPath>  
+                        <filtering>false</filtering>  
+                        <includes>  
+                            <include>**/*.class</include>  
+                        </includes>  
+                    </resource>  
+                </webResources>  
+				</configuration>
+			</plugin>
+<plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/KBSE</path>
+                    <port>8080</port>
+                    <!--<warSourceDirectory>/web</warSourceDirectory>-->
+                    <uriEncoding>UTF-8</uriEncoding>
+                </configuration>
+            </plugin>
+        </plugins>
+        <finalName>KBSE</finalName>
+    </build>
     
 </project>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://v4.bootcss.com/docs/4.0/examples/grid/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="abstract" content="">
+    <link rel="icon" href="images/yumei_yam_chips_cumin.jpg">
+
+    <title id="title_header">Suffix</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/grid.css" rel="stylesheet">
+
+    <script src="js/jquery.js"></script>  
+    <script type="text/javascript">
+
+      var keyword = window.location.href.split("=")[1];
+      
+      $("document").ready(function(){
+         document.getElementById("title_header").innerHTML = (window.location.href.split("=")[1]);
+         document.getElementById("header1").innerHTML=(window.location.href.split("=")[1]);
+         
+         document.getElementById("descriptions").innerHTML=("<a href=\"" + window.location.href.split("=")[2] + "\">" 
+         + window.location.href.split("=")[2] + "</a>");
+
+         $(".Types").hide();
+         $(".Relations").hide();
+         $(".Properties").hide();
+
+         $(".col-md-6").hide();
+         var cll = $(".cll");
+         var cls = $(".cls");
+         var ctemp = cls.html();
+         cll.html("");
+
+         var illpl = $(".illpl");
+         var illps = $(".illps");
+         var illptemp = illps.html();
+         illps.html("");
+
+         var illol = $(".illol");
+         var illos = $(".illos");
+         var illotemp = illos.html();
+         illos.html("");
+
+         var lllpl = $(".lllpl");
+         var lllps = $(".lllps");
+         var lllptemp = lllps.html();
+         lllps.html("");
+
+         var lllol = $(".lllol");
+         var lllos = $(".lllos");
+         var lllotemp = $(".lllos").html();
+         lllos.html("");
+
+         $.ajax({
+                    type: "POST",
+                    url: '/KBSE/KGSearch',
+                    dataType: 'text',
+
+                    data : {
+                        suffix: keyword
+                    },
+
+                    success : function(data){
+                      console.log("COMMUNICATION SUCCESS");
+                       data_json = JSON.parse(data); 
+                       var array_po = data_json.relation;
+                       var comment = "";
+                       var abstract = "";
+
+                       for(var i=0; i<array_po.length; i++) {
+                           var po = array_po[i];
+                           var p = po.predicate;
+                           var o = po.object;
+                           
+                           if (p=="http://www.w3.org/2000/01/rdf-schema#comment") {
+                              comment = o;
+                           } else if (p=="http://dbpedia.org/ontology/abstract"){
+                              abstract = o;
+                           } else if (p=="http://www.w3.org/1999/02/22-rdf-syntax-ns#type") {
+                              var content = ctemp.replace(/{{TYPES}}/g,o.substring(o.lastIndexOf("/")+1));
+                              cll.append(content);
+                           } else if (o.indexOf('http://dbpedia.org') != -1) {
+                                 var content_p =  illptemp.replace(/{{RELATIONS}}/g, p.substring(p.lastIndexOf("/")+1));
+                                 var object_name = o.substring(o.lastIndexOf("/")+1);
+                                 var content_o = illotemp.replace(/{{INSTANCES}}/g, "<a href=\"info.html?=" + object_name + "=" + encodeURI(o) + "\">" + object_name + "</a>");
+                                 illpl.append(content_p);
+                                 illol.append(content_o);
+                           } else {
+                              if (o.indexOf("@") != -1) {
+                                  o = o.substring(0, o.lastIndexOf("@"));
+                              }
+                              if (o.indexOf("^^") != -1) {
+                                  o = o.substring(0, o.lastIndexOf("^^"));
+                              }
+                              var content_p = lllptemp.replace(/{{PROPERTIES}}/g, p.substring(p.lastIndexOf("/")+1));
+                              var content_o = lllotemp.replace(/{{LITERALS}}/g, o);
+                              lllps.append(content_p);
+                              lllos.append(content_o);
+                           }
+                       }
+
+                       if (comment.length > abstract) {
+                          document.getElementById("abstract").innerHTML = comment;
+                       } else {
+                          document.getElementById("abstract").innerHTML = abstract;
+                       }
+
+                       $(".Types").show();
+                       $(".Relations").show();
+                       $(".Properties").show();
+                       $(".col-md-6").show();
+                    },
+
+                    error : function(data){
+                        console.log("COMMUNICATION ERROR");
+                        document.getElementById("descriptions").innerHTML = "Whoops!!!\tNothing found about " + keyword; 
+                        return false;
+                    }
+          });
+      });
+
+    </script>
+
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 id="header1" >Suffix</h1>
+      <p class="lead" id="descriptions">URI </p>
+      <p class="lead" id="abstract" style="font-size: 14px;"></p>
+      <div class="Types"><h3>Types</h3></div>
+      <!--p>Get two columns <strong>starting at desktops and scaling to large desktops</strong>.</p-->
+      <div class="row">
+        <div class="col-md-6" style="text-align:center;">
+          <cll class="cll">
+            <cls class="cls">
+              <div class="type">{{TYPES}}</div>
+            </cls>
+          </cll>
+        </div>
+      </div>
+
+      <div class="Relations"><h3>Relations</h3></div>
+      <!--p>Get two columns <strong>starting at desktops and scaling to large desktops</strong>.</p-->
+      <div class="row">
+        <div class="col-md-6" style="text-align:center;">
+          <illpl class="illpl">
+            <illps class="illps">
+              <div class="relations">{{RELATIONS}}</div>
+            </illps>
+          </illpl>
+        </div>
+        <div class="col-md-6" style="text-align:center;">
+          <illol class="illol">
+            <illos class="illos">
+              <div class="entities">{{INSTANCES}}</div>
+            </illos>
+          </illol>
+        </div>
+      </div>
+      <div class="Properties"><h3>Properties</h3></div>
+      <!--p>Get two columns <strong>starting at desktops and scaling to large desktops</strong>.</p-->
+      <div class="row">
+        <div class="col-md-6" style="text-align:center;">
+          <lllpl class="lllpl">
+            <lllps class="lllps">
+              <div class="properties">{{PROPERTIES}}</div>
+            </lllps>
+          </lllpl>
+        </div>
+        <div class="col-md-6" style="text-align:center;">
+          <lllol class="lllol">
+            <lllos class="lllos">
+              <div class="literals">{{LITERALS}}</div>
+            <lllos>
+          <lllol>
+        </div>
+      </div>
+      <!--h3>Full width, single column</h3>
+      <p class="text-warning">No grid classes are necessary for full-width elements.</p-->
+    </div><!--/container--> 
+</body></html>

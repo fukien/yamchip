@@ -68,6 +68,7 @@ public class TDBConnection implements AutoCloseable{
 		String sparql = "insert { ?s ?p ?o } where { bind("+s+" as ?s) . bind("+p+" as ?p) . bind("+o+" as ?o)}";
 		conn.begin(ReadWrite.WRITE);
 		//System.out.println(sparql);
+		System.out.println(sparql);
 		UpdateRequest req = UpdateFactory.create(sparql);
 		conn.update(req);
 		conn.commit();
