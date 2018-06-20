@@ -22,7 +22,6 @@
             $("document").ready(function(){
                 keyword = window.location.href.split("=")[1];
                 page = window.location.href.split("=")[2];
-                alert(keyword)
                 document.getElementById("header_title").innerHTML = keyword + " - Yamchip Search";
 
                 $(".resultItem").hide();
@@ -30,7 +29,7 @@
                 var start_date = new Date();
 
                 $.ajax({
-                    type: "GET",
+                    type: "POST",
                     url: '10.48.162.169:8080/KBSE/KBSearch',
                     dataType: 'text',
 
@@ -111,6 +110,7 @@
                     },
 
                     error : function(data){
+                        console.log(data);
                         alert("json =" + json);
                         return false;
                     }
