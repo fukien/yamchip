@@ -23,7 +23,11 @@ public class Insert extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        System.out.println("aaaa");
+        //System.out.println("aaaa");
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = response.getWriter();
+        System.out.println("test");
+
         //将接受到的数据放入
         String jsonStr="";
         request.getParameter(jsonStr);
@@ -74,6 +78,8 @@ public class Insert extends javax.servlet.http.HttpServlet {
 
 
     }
+
+    /*
     private String readJsonFromRequestBody(HttpServletRequest req){
         StringBuffer jsonBuf=new StringBuffer();
         char[] buf=new char[2048];
@@ -89,6 +95,7 @@ public class Insert extends javax.servlet.http.HttpServlet {
         }
         return jsonBuf.toString();
     }
+    */
 
 }
 

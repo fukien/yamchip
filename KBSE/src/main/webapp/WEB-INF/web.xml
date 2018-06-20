@@ -11,6 +11,10 @@
         <servlet-name>Insert</servlet-name>
         <servlet-class>kbsearch.Insert</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Update</servlet-name>
+        <servlet-class>kbsearch.Update</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name> KBS</servlet-name>
         <url-pattern>/KBSearch</url-pattern>
@@ -18,5 +22,9 @@
     <servlet-mapping>
         <servlet-name> Insert</servlet-name>
         <url-pattern>/Insert</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Update</servlet-name>
+        <url-pattern>/Update</url-pattern>
     </servlet-mapping>
 </web-app>
