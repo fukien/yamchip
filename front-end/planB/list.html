@@ -22,7 +22,7 @@
             $("document").ready(function(){
                 keyword = window.location.href.split("=")[1];
                 page = window.location.href.split("=")[2];
-
+                alert(keyword)
                 document.getElementById("header_title").innerHTML = keyword + " - Yamchip Search";
 
                 $(".resultItem").hide();
@@ -31,14 +31,15 @@
 
                 $.ajax({
                     type: "GET",
-                    url: 'data_odd.txt',
+                    url: '10.48.162.169:8080/KBSE/KBSearch',
                     dataType: 'text',
 
                     data : {
-                        "keyword": keyword
+                        keywords: keyword
                     },
 
                     success : function(data){
+                        alert(data)
                         var end_date = new Date();
                         var query_time = end_date.getMilliseconds() - start_date.getMilliseconds();
                         data_json = JSON.parse(data);
