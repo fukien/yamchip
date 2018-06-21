@@ -50,6 +50,7 @@ function inputkeyup(event) {
     input.attr(NEWATTR, "true");
     var data = input.val();
     var ul = $(this).parent().children("ul");
+    ul.children().remove();
     $.ajax({
         type: "GET",
         //  type: "POST",
