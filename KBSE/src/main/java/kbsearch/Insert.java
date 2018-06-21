@@ -112,11 +112,13 @@ public class Insert extends javax.servlet.http.HttpServlet {
                 object=(String)job.get("object");
                 //  insert(s,p,object);
                 time="" + System.currentTimeMillis();
-                String value=predicate+" "+object;
+                String esSubject = subject.substring(1,subject.length()-1);
+                String esPredicate = predicate.substring(1,predicate.length()-1);
+                String value=esPredicate+" "+object;
                 source.put(time,value);
 
                 ESClient client=new ESClient();
-                client.ESC_insert(source,subject);
+                client.ESC_insert(source,esSubject);
                 
                 String literal = object;
                 if(!object.startsWith("\""))literal = "\""+literal+"\"";
