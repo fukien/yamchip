@@ -48,7 +48,7 @@ function inputkeyup(event) {
 //	alert("showSelectlist");
     var input = $(this);
     input.attr(NEWATTR, "true");
-    var data = input.val();
+    var data = "///" + input.val();
     var ul = $(this).parent().children("ul");
     ul.children().remove();
     $.ajax({
@@ -94,6 +94,11 @@ function submmit() {
     $("tr").each(function (i) {
         index += 1;
         var subject = $(this).find(".subject").val();
+        if (typeof subject == 'undefined') {
+            error = true;
+            alert("ERROR: 第" + index + "个三元组请选择或添加主语！")
+            return;
+        }
         var subjectnew = $(this).find(".subject").attr(NEWATTR);
         if (typeof subjectnew == 'undefined') {
             subjectnew = "true";  //default is regarded as new
@@ -103,9 +108,13 @@ function submmit() {
         }
 
         var predicate = $(this).find(".predicate").val();
-
+        if (typeof predicate == 'undefined') {
+            error = true;
+            alert("ERROR: 第" + index + "个三元组请选择谓语！")
+            return;
+        }
         var predicatenew = $(this).find(".predicate").attr(NEWATTR);
-        if (typeof predicatenew == 'undefined') {
+        if (typeof predicatenew == 'undefined' || predicatenew == "true") {
             error = true;
             alert("ERROR: 第" + index + "个三元组的谓语请从已存在的中进行选择！")
             return;
@@ -114,8 +123,13 @@ function submmit() {
         }
 
         var object = $(this).find(".object").val();
+        if (typeof object == 'undefined') {
+            error = true;
+            alert("ERROR: 第" + index + "个三元组请选择或添加宾语！")
+            return;
+        }
         var objectnew = $(this).find(".object").attr(NEWATTR);
-        if (typeof objectnew == 'undefined') {
+        if (typeof objectnew == 'undefined' ) {
             objectnew = "true";  //default is regarded as new
         } else {
             object = $(this).find(".object").attr(URI);
@@ -132,7 +146,7 @@ function submmit() {
     if (error == true) {
         return;
     }
-
+    alert(JSON.stringify(relations));
     $.ajax({
        // type: "GET",
         type: "POST",
@@ -150,5 +164,5 @@ function submmit() {
             alert("error" + data);
         }
     });
-    alert(JSON.stringify(relations));
+
 }
