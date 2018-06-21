@@ -45,7 +45,7 @@ function eventInit()
 	$(".dropdown-toggle").keyup(inputkeyup);
 	$("#insert_table .menu").click(dropdown_click);
 	$(".del-button").click(del_row);
-	$("ul").blur(function(){
+	$("input").focus(function(){
 		$("ul").hide();
 	});
 }
@@ -133,7 +133,7 @@ function submmit(){
 		
 		var object = $(this).find(".object").val();
 		var objectnew = $(this).find(".object").attr(NEWATTR);
-		if( typeof objectnew == 'undefined' ){
+		if( typeof objectnew == 'undefined' ||objectnew=='true'){
 			objectnew = "true";  //default is regarded as new
 		}else{
 			object = $(this).find(".object").attr(URI);
