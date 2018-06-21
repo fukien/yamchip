@@ -1,0 +1,173 @@
+<html>
+<head>
+    <title>Yamchip</title>
+    <style>
+        a{color:#333;font-weight: 700;font-size:13px;}
+        /*浮动样式**/
+       .f_r{float:right;}
+       .clear{clear: both;}
+       /*居中样式**/
+       .center{
+            margin:0 auto;
+            text-align: center;
+        }
+       ul li{
+            list-style: none;
+            float:left;
+            margin-right: 10px;
+        }
+        /**顶部更多产品样式***/
+        .more_products{
+            width:60px;
+            text-align: center;
+            background:#fff;
+        }
+        .more_products a{
+            color: #000;
+        }
+        /**搜索框顶部图片***/
+        .search_img {
+            clear: both;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .search_img img{
+            height: 160px;
+        }
+        /*搜索框样式**/
+        .search_form {
+            text-align: center;
+            margin: 0 auto;
+            min-height: 200px;
+        }
+        .search_form input[type="text"]{
+            width:500px;
+            height:40px;
+            font-size:14px;
+            margin-top: 1em;
+        }
+        .search_form input[type="button"]{
+            width:100px;
+            height:40px;
+            background: #3385FF;
+            color:#fff;
+            border-bottom: 1px solid #2d78f4;
+            -webkit-appearance: none;
+            -webkit-border-radius:0;
+            outline: medium;
+            margin-left:-6px;
+            font-size: 15px;
+        }
+        /*底部样式**/
+        .footer{
+            color:#999;
+        }
+        
+        .friend_link{
+            width:400px;
+            margin-bottom:20px;
+            list-style: none;
+            margin:0 auto;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .friend_link  li a{
+            color: #999;
+        } 
+        .footer .mobile_link{
+            color: #666;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .copyright{
+            display: block;
+            padding-top:20px;
+            margin-top: 20px;
+        }
+        .simple_header{
+            font-size: 38px;
+            clear: both;
+            text-align: center;
+/*            margin: 0 auto;
+*/            letter-spacing: -4px;
+              padding-top: 180px;
+          }
+        .simple_header Y{
+            font-size: 46px;
+            color: #38f;
+        }
+        .simple_header YA{
+            color: #f00;
+        }
+        .simple_header M{
+            color: #f90;
+        }
+        .simple_header C{
+            color: #38f;
+        }
+        .simple_header H{
+            color: #090;
+        }
+        .simple_header HI{
+            color: #f00;
+        }
+        .simple_header HIP{
+            color: #f90;
+        }
+    </style>
+
+    <link rel="shortcut icon" href="images/yumei_yam_chips_cumin.jpg">
+</head>
+
+
+
+
+<body>
+
+    <ul class="f_r">
+        <li class="more_products"><a href="update。html">AddRelation</a></li>
+    </ul>
+
+  
+    <div class="simple_header">
+        <simpleHeader> 
+                    <Y> Y </Y> 
+                    <YA> A </YA> 
+                    <M> M </M> 
+                    <C> C </C> 
+                    <H> H </H> 
+                    <HI> I </HI>
+                    <HIP> P </HIP> 
+        <simpleHeader/>
+    </div>
+
+    <div class="search_form" >
+         <form>
+           <!--  <span> -->
+            <input type="text" name="keyword" id="query_keyword">
+            <input type="button" value="Search"  onclick="doClick()" id="query_button">
+            <!-- </span> -->
+        </form>
+    </div>
+
+
+    <div class="footer center">
+        <div>
+            <img src="images/WechatIMG1.jpeg" width="60px" height="60px">
+            <p class="mobile_link">Scan QR code for more info</p>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="js/jquery-1.9.min.js"></script>
+    <script type="text/javascript" src="js/homepage.js"></script>
+    <script type="text/javascript">
+        function doClick() {
+            var query_keyword=$("#query_keyword").val();
+            window.open("list.html?querykeyword=" + query_keyword + "=" + 1);   
+    }
+    </script>
+
+</body>
+
+</html>

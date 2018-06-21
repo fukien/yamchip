@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>update</title>
+		<script src="js/jquery-2.2.1.js"></script>
+		<script src="js/js.cookie.js"></script>
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript" src="js/echarts.min.js"></script>
+		
+		<link rel="stylesheet" href="css/update.css">
+		<link rel="stylesheet" href="css/combo.select.css">
+
+		<script src="js/update.js"></script>	
+		<script src="js/jquery.combo.select.js"></script>
+
+		<script  type="text/javascript" >
+			$("document").ready(function(){
+				init();
+			});
+		</script>
+	</head>
+	
+	<body>
+
+		<div class="whole-body" id="whole_body">
+			<center>
+			<img id="img_logo"  src="img/new_logo_cut.png" ></img>
+			<table id="insert_table">
+			<tr>
+				<td>
+				<div class="input-group dropdown">
+					<span class="input-group-addon">主语：</span>
+					<input type="text" data-type="subject" class="form-control subject dropdown-toggle" data-toggle="dropdown">
+					<ul  class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="subject"></ul>
+				</div>
+				</td>
+			
+				<td>
+				<div class="input-group dropdown">
+					<span class="input-group-addon">谓语：</span>
+					<input type="text" data-type="predicate" class="form-control predicate dropdown-toggle" data-toggle="dropdown">
+					<ul  class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="predicate"></ul>
+				</div>
+				</td>
+			
+				<td>
+				<div class="input-group dropdown">
+					<span class="input-group-addon">宾语： </span>
+					<input type="text" data-type="object" class="form-control object dropdown-toggle" data-toggle="dropdown">
+					<ul  class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="object"></ul>
+				</div>
+				</td>
+				<td>
+				<button type="submmit" class="btn btn-default del-button">删除</button>
+				</td>
+			</tr>
+			</table>
+			<button type="button" class="btn btn-default" onclick="add_row()">添加</button>
+			<button type="submmit" class="btn btn-default" onclick="submmit()">提交</button>
+			</center>
+			
+		</div><!--whole-body-->
+		
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	</body>
+	
+</html>
