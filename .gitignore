@@ -3,5 +3,4 @@ KBSE/.idea/*
 KBSE/lib/*
 KBSE/out/*
 KBSE/web/WEB-INF/lib/*
-
-
+.DS_Store
